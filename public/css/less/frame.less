@@ -2,7 +2,8 @@
 *{
     margin:0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing:border-box;
+    font-family: "Helvetica",
 }
 html{
     width:100%;
@@ -12,13 +13,55 @@ html{
 body{
     width:100%;
     height:auto;
+    font-size: 16px;
 }
-//for index page
+main{
+    height:auto;
+}
 main.index{
     width:100%;
     height:auto; 
 }
-main.normal{
-    width:80%;
-    max-width: 1024px;
+main.scene, main.hotel{
+    position: relative;
+    @media screen and (min-width:960px){
+        padding-top:5%;
+        width:85%;
+        min-width: 900px;
+        max-width: 1024px;
+        margin:auto;
+    }
+    @media screen and (max-width:960px){
+        padding-top: 6%;
+        width:100%;
+        max-width: 800px;
+        padding-left:2%;
+        padding-right: 2%;
+        margin:auto;
+    }
+}
+img{
+    line-height: 0;
+    font-size: 0;
+    display: block;
+}
+.clearfix{
+    &::after{
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+.huge{
+    font-size: @huge;
+}
+.medium{
+    font-size: @medium;
+}
+.small{
+    font-size: @small;
+}
+
+.clickable{
+    cursor: pointer;
 }

@@ -9,45 +9,58 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="stylesheet" type="text/css" href="../css/framewrok"/>
+        <link rel="stylesheet" type="text/css" href="../css/frame.css"/>
         <link rel="stylesheet" type="text/css" href="../css/component.css"/>
         <link rel="stylesheet" type="text/css" href="../css/page.css"/>
         <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
-        <script type="text/javascript" src="../js/"></script>
-        <script type="text/javascript" src="../js/"></script>
+        <!-- <script type="text/javascript" src="../js/"></script> -->
+        <!-- <script type="text/javascript" src="../js/"></script> -->
     </head>
     <body>
         <header>
             <div class="logo">
                 <a src="/">
-                    <img src="" alt/>
+                    <img src="../resource/picture/scene1.jpg" alt/>
                 </a>
             </div>
-            <div class="banners">
-                <a src="" target="blank">景点</a>
-                <a src="" target="blank">农家乐</a>
+            <div class="tabs">
+                <a class="tab" src="" target="blank"><span>景点</span></a>
+                <a class="tab" src="" target="blank"><span>农家乐</span></a>
+                <a class="tab" src="" target="blank"><span>关于</span></a>
             </div>
         </header>
         <main>
-            <section id="scene slide">
-                 <div class="picture">
-                     <img alt="" src="../resource/picture/scene1.jpg">
-                 </div>
-                <div class="info">
-                    <h1>靖安中源九岭尖</h1>
-                    <p class="address">江西省靖安县中源乡合港村</p>
+            <section id="scene" class="slide">
+                <div class="content-wrapper clearfix">
+                    <div class="picture clearfix ">
+                        <div class="landscape">
+                            <a target="blank" src="">
+                                <div class="info">
+                                    <h1>靖安中源九岭尖</h1>
+                                    <p class="address">江西省靖安县中源乡合港村</p>
+                                    <div><a target="blank" href="/map#hashable" alt=""><span>单击查看</span></a></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="map-cantainer">
+                            <!--除单击外，地图不可操作  -->
+                        </div>
+                    </div>
                 </div>
-                <div><a target="blank" href="/map#hashable" alt="">查看更多</a></div>
+                <div class="banner"></div>
             </section>
-            <section id="hotel slide">
-                <div class="picture">
-                    <img alt="" src="../resource/picture/scene2.jpg"> 
+            <section id="hotel" class="slide">
+                <div class="content-wrapper clearfix">
+                    <div class="picture">
+                        <a target="blank">
+                            <div class="info">
+                                <h1></h1>
+                                <p class="address"></p>
+                                <div><a class="btn" target="blank" href="" alt=""><span>查看更多</span></a></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="info">
-                    <h1></h1>
-                    <p class="address"></p>
-                </div>
-                <div><a target="blank" href="" alt="">查看更多</a></div>
+                <div class="banner"></div>
             </section>
         </main>
         <footer>

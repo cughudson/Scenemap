@@ -1,33 +1,190 @@
+@import "param.less";
 header{
     width:100%;
+    height: @menuHeight;
+    position: relative;
+    box-shadow: 0px 0 11px 0px lighten(@lightBlack,40%);
     .logo{
-
+        position: absolute;
+        @media screen and (min-width:640px){
+            left:@menuHeight*0.5;
+        }
+        @media screen and (max-width:640px){
+            left:@menuHeight*0.25;
+        }
+        height:100%;
+        width:auto;
+        a{
+            display: block;
+            height:100%;
+            width:100%;
+            padding: 8px 0;
+            img{
+                height:inherit;
+                width:auto;
+            }
+        }
     }
-.banner{
-
+    .tabs{
+        position: absolute;
+        @media screen and (min-width:640px){
+            right:@menuHeight*0.5;
+        }
+        @media screen and (max-width:640px){
+            right:@menuHeight*0.25;
+        }
+        height:@menuHeight;
+        cursor: pointer;
+        .tab{
+            display: block;
+            float:left;
+            height:100%;
+            padding: 0 32px;
+            background:lighten(@lightBlack,70%);
+            font-size: 1rem;
+            &:hover{
+                background:lighten(@lightBlack,65%);
+            }
+            &:active{
+                background:lighten(@lightBlack,60%);
+            }
+            span{
+                height:@menuHeight;
+                display: table-cell;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+        }
     }
 }
 footer{
-
+    font-family:inherit;
+    font-size:.8rem;
+    line-height: 150%;
+    text-align: center;
+    padding: 24px;
+    border-top:10px solid blue;
 }
 .slide{
-    
+    width:100%;
+    position: relative;
 }
 button,.btn,input[type="file"],input[type='button']{
-
+    border: 1px solid lighten(@lightBlack,50%);
+    border-radius: 3px;
+    padding: 4px 8px;
+    background: lightblue;
+    &:active{
+        transition: border .5s ease-in-out;
+        border: 1px solid lightseagreen;
+    }
+    &:hover{
+        
+    }
 }
-input[type='text']{
-
+input[type='text'], textarea{
+    border: 1px solid lighten(@lightBlack,50%);
+    border-radius: 3px;
+    padding: 4px 8px;
+    &:active{
+        transition: border .5s ease-in-out;
+        border: 1px solid lightseagreen;
+    }
+    &:hover{
+        //
+    }
+}
+//button
+a.btn{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color:@lightBlack;
+    display: inline-block;
+}
+.btn{
+    cursor: pointer;
 }
 
-.card{
+//current position
+.position{
+    width:100%;
+    padding:24px;
+}
+//share
+.share{
+    margin:24px;
+}
+.circle-thumnail{
+    display: inline-block;
+    font-size: 0;
+    line-height:0;
+    width:30px;
+    height:30px;
+    margin:6px;
+    border-radius: 15px;
+    overflow: hidden;
     img{
-
+        height:100%;
+        width:auto;
     }
-    .address{
-
+    &:hover{
+        img{
+            filter: grayscale(100%);
+            transition:  filter .5s ease-in-out;
+        }
     }
-    .cantact-us{
+    &:not(:hover){
+        img{
+            filter: grayscale(0%);
+            transition:  filter .5s ease-in-out;   
+        }
+    }
+}
 
+.hotel-item{
+    box-sizing: border-box;
+    display:inline-block;
+    @media screen and (min-width:490px){
+        width:22%;
+        margin:12px;
+        min-width: 200px;
+        max-width: 320px;
+    }
+    @media screen and (max-width:490px){
+        width:100%;
+        margin-bottom: 24px;
+    }
+    border: 1px solid gray;
+    border-radius:2px;
+    height:auto;
+    .hotel-image{
+        width:100%;
+        padding: 26%;
+        border-radius:2px 2px 0 0;
+        background-image: url(../resource/picture/scene1.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .hotel-info{
+        padding:12px 12px 0 12px;
+        text-align: left;
+        h4{
+            line-height: 150%;
+        }
+        p{
+            line-height: 150%;
+        }
+        li{
+            list-style: none;
+        }
+    }
+    .toolbar{
+        padding: 6px 12px 12px 12px;
+        span{
+            display: block;
+            float:right;
+            padding: 8px;
+        }
     }
 }
