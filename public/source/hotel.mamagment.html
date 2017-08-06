@@ -9,16 +9,60 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="stylesheet" type="text/css" href="../css/framewrok"/>
-        <link rel="stylesheet" type="text/css" href="../css/template.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/frame.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/component.css"/>
         <link rel="stylesheet" type="text/css" href="../css/page.css"/>
-        <script type="text/javascript" src="../js/"></script>
-        <script type="text/javascript" src="../js/"></script>
+        <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
+        <!-- <script type="text/javascript" src="../js/"></script> -->
+        <!-- <script type="text/javascript" src="../js/"></script> -->
     </head>
     <body>
-        <header></header>
-        <main class="items-wrapper">
+        <header>
+            <div class="logo">
+                <a href="/" target="self">
+                    <img src="../resource/picture/scene1.jpg" alt/>
+                </a>
+            </div>
+            <div class="tabs">
+                <a class="tab" src="" target="blank"><span>退出</span></a>
+            </div>
+        </header>
+        <main class="managment">
+            <div class="menu">
+                <div class="clickable"><span>新建景点</span></div>
+                <div class="clickable"><span>景点管理</span></div>
+                <div class="clickable"><span>新建民宿</span></div>
+                <div class="clickable"><span>民宿管理</span></div>
+                <div class="clickable"><span>系统管理</span></div>
+                <div class="clickable"><span>运行状态</span></div>
+            </div>
+            <div class="editor-wrapper">
+                <section class="editor">
+                    <h1>景点管理</h1>
+                    <section>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>标题</td>
+                                        <td>发布时间</td>
+                                        <td>访问数量</td>
+                                        <td>操作</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </div>
+                        </div>
+                        <div></div>
+                        <!--分页使用  -->
+                        <div class="pagesplit"></div>
+                    </section>
+                </section>
+                <div class="status-bar"></div>
+            </div>
         </main>
-        <footer></footer>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>中国-江西-靖安-中源</title>
+        <title>中国-江西-靖安-民宿</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -9,27 +9,51 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="stylesheet" type="text/css" href="../css/framewrok"/>
-        <link rel="stylesheet" type="text/css" href="../css/template.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/frame.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/component.css"/>
         <link rel="stylesheet" type="text/css" href="../css/page.css"/>
-        <script type="text/javascript" src="../js/"></script>
-        <script type="text/javascript" src="../js/"></script>
+        <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
+        <!-- <script type="text/javascript" src="../js/"></script> -->
+        <!-- <script type="text/javascript" src="../js/"></script> -->
     </head>
     <body>
-        <section>
-            <h2>日志导出</h2>
-            <div>
-                <input id="start" type="text" autocomplete="false" placeholder="起始日期">
-                <input id="end" type="text" autocomplete="false" placeholder="结束日期">
-                <button id="log-export">导出</button>
+        <header>
+            <div class="logo">
+                <a href="/" target="self">
+                    <img src="../resource/picture/scene1.jpg" alt/>
+                </a>
             </div>
-        </section>
-        <section>
-            <h2>用户管理<sub>仅限管理员</sub></h2>
-            <div class="user-wrapper">
-                <div id="current-user"></div>
-                <span id="add-user"></span>
+            <div class="tabs">
+                <a class="tab" src="" target="blank"><span>退出</span></a>
             </div>
-        </section>
+        </header>
+        <main class="managment">
+            <div class="menu">
+                <div class="clickable"><span>新建景点</span></div>
+                <div class="clickable"><span>景点管理</span></div>
+                <div class="clickable"><span>新建民宿</span></div>
+                <div class="clickable"><span>民宿管理</span></div>
+                <div class="clickable"><span>系统管理</span></div>
+                <div class="clickable"><span>运行状态</span></div>
+            </div>
+            <div class="editor-wrapper">
+                <section>
+                    <h2>日志导出</h2>
+                    <div>
+                        <input id="start" type="text" autocomplete="false" placeholder="起始日期">
+                        <input id="end" type="text" autocomplete="false" placeholder="结束日期">
+                        <button id="log-export">导出</button>
+                    </div>
+                </section>
+                <section>
+                    <h2>用户管理<sub>仅限管理员</sub></h2>
+                    <div class="user-wrapper">
+                    <div id="current-user"></div>
+                        <span id="add-user"></span>
+                    </div>
+                </section>
+                <div class="status-bar"></div>
+            </div>
+        </main>
     </body>
 </html>
