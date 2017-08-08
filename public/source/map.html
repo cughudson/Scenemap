@@ -9,11 +9,12 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="stylesheet" type="text/css" href="../css/framewrok"/>
-        <link rel="stylesheet" type="text/css" href="../css/template.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/frame.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/component.css"/>
         <link rel="stylesheet" type="text/css" href="../css/page.css"/>
-        <script type="text/javascript" src="../js/"></script>
-        <script type="text/javascript" src="../js/"></script>
+        <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
+        <!-- <script type="text/javascript" src="../js/"></script> -->
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=cUWciM1b3cacMFaSKRgTGT9W5yfh7RF7"></script>
         <script class="popup" type="template/html">
             <div class="scene-popup">
                 <div class="index-face"></div>
@@ -27,20 +28,25 @@
         </script>
     <head>
     <body>
-        <header id="map">
-            <div class="logo"></div>
-            <div class="type">
-                <div class="head-btn">景点</div>
-                 <div class="head-btn">民宿</div>
-            </div>
-            <div id="search">
-                <input type="text" autocomplete="true" maxlength="20"/>
-                <div class="search-icon">
-                    <span></span>
-                </div>
+        <header class="map">
+            <div class="logo">
+                <a src="/">
+                    <img src="../resource/picture/scene1.jpg" alt/>
+                </a>
             </div>
         </header>
-        <main id="map">
+        <main id="map-cantainer">
+            <section id="lengend">
+                <span class="nature"自然景点</span>
+                <span class="culture">人文景点</span>
+                <span class="hotel">农家乐</span>
+            </section>
+            <section id="switch">
+                <span class="nature">自然景点</span>
+                <span class="culture">人文景点</span>
+                <span class="hotel">农家乐</span>
+            </section>
+            <div id="map"></div>
         </main>
     </body>
 <html>

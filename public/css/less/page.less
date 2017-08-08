@@ -184,3 +184,45 @@ main.scene,main.hotel{
         }
     }
 }
+//map page
+header.map{
+    //opacity: 0.05;
+    background: transparent;
+    box-shadow: none;
+    width:auto !important;
+    position: absolute;
+    max-width:320px !important; 
+}
+#map-cantainer{
+    position: absolute;
+    width:100%;
+    top:0px;
+    bottom: 0;
+    background: gray;
+    #map{
+        width:100%;
+        height:100%;
+        position: relative;
+    }
+    #switch{
+        position: absolute;
+        right:16px;
+        top:16px;
+        background: white;
+        box-shadow: 1px 1px 1px 1px gray;
+        border-radius: 2px;
+        span{
+            padding: 8px;
+            font-size: 12px;
+        }
+    }
+    #lengend{
+        position: absolute;
+        bottom: 16px;
+        right:16px;
+        span{
+            padding: 8px;
+            font-size: 12px;
+        }
+    }
+}

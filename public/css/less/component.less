@@ -5,6 +5,7 @@ header{
     position: relative;
     box-shadow: 0px 0 11px 0px lighten(@lightBlack,40%);
     min-width: 640px;
+    z-index: 10000;
     .logo{
         position: absolute;
         @media screen and (min-width:640px){
@@ -194,7 +195,7 @@ a.btn{
     position: fixed;
     width:240px;
     height:100%;
-    z-index: -1;
+    z-index: 1;
     padding-top: 64px;
     background:@white;
     border-right:1px solid lighten(@lightBlack,50%);
@@ -221,4 +222,62 @@ a.btn{
     border-top:1px solid lighten(@lightBlack, 50%); 
     bottom: 0;
     position:fixed;
+}
+//管理页面中的表格
+.table{
+    padding: 32px 0;
+    .filter{
+        padding: 12px;
+        color:lightblue;
+        span{
+            padding: 3px 6px;
+            margin:0 12px;
+            &:active{
+                background: lighten(@lightBlack, 70%);
+            }
+        }
+    }
+    table{
+        width:80%;
+        max-width: 840px;
+        min-width: 720px;
+        border-collapse: collapse;
+        tr{
+            width: 100%;
+            td{
+                text-align: left;
+                line-height: 150%;
+                padding: 6px 12px;
+                border-collapse: collapse;
+                font-size: .8rem;
+                &.index{width:10%}
+                &.title{width:35%}
+                &.time{width:15%}
+                &.visit{width:15%}
+                &.toolbar{width:25%}
+            }
+            &:hover{
+                background: lighten(@lightBlack,85%);
+            }
+        }
+        .thead{
+            background: lighten(@lightBlack, 80%);
+            border-top:2px solid   lighten(@lightBlack, 40%);
+            td{
+               line-height: 150%;
+               font-weight: bold;
+            }
+        }
+        tr{
+            border-top:1px solid black;
+            &:last-child{
+                border-bottom: 2px solid lighten(@lightBlack, 40%); 
+            }
+            td.toolbar{
+                span{
+                    padding: 0 4px;
+                }
+            }
+        }
+    }
 }
