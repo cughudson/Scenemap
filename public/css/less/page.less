@@ -226,3 +226,37 @@ header.map{
         }
     }
 }
+// login page
+body.login{
+    background: @slightGray;
+}
+main.login{
+    background: @white;
+    top:100px;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 1px 1px 8px 0px @boxShadowColor;
+    border:1px solid @boxShadowColor;
+    @media screen and (min-width:640px){
+        width:320px;
+        margin:auto;
+        padding: 48px 48px;
+    }
+    @media screen and (max-width:640px){
+        width:100%;
+        max-width: 480px;
+        margin:auto;
+        padding: 32px;
+    }
+    form{
+        width:100%;
+        input{
+            width:100%;
+            margin:12px 0;
+        }
+        button{
+            margin-top: 24px;
+            width: 100%;
+        }
+    }
+}

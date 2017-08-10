@@ -74,23 +74,34 @@ footer{
 button,.btn,input[type="file"],input[type='button']{
     border: 1px solid lighten(@lightBlack,50%);
     border-radius: 3px;
-    padding: 4px 8px;
-    background: lightblue;
+    padding: 8px 24px;
+    background: @white;
+    font-size: .8rem;
+    margin:12px 0;
+    letter-spacing: 4px;
+    cursor: pointer;
+    background:@skyBlue;
+    border: 1px solid darken(@skyBlue,5%);
+    color:@white;
     &:active{
+        will-change:background;
         transition: border .5s ease-in-out;
-        border: 1px solid lightseagreen;
+        background:darken(@skyBlue, 10%);
     }
     &:hover{
-        
+        will-change: background;
+        transition:background .5s ease-in-out;
+        background:darken(@skyBlue,5%);
     }
 }
-input[type='text'], textarea{
+input[type='text'], textarea,input[type='password']{
     border: 1px solid lighten(@lightBlack,50%);
     border-radius: 3px;
-    padding: 4px 8px;
+    padding: 8px 12px;
+    font-size: .8rem;
     &:active{
         transition: border .5s ease-in-out;
-        border: 1px solid lightseagreen;
+        border: 1px solid @skyBlue;
     }
     &:hover{
         //
@@ -102,6 +113,7 @@ a.btn{
     font-size: 1.5rem;
     color:@lightBlack;
     display: inline-block;
+    background: @skyBlue;
 }
 .btn{
     cursor: pointer;
