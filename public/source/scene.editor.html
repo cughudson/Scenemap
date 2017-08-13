@@ -43,16 +43,16 @@
                     <form method="post" action="" id="editor">
                         <div class="input-group">
                             <h5>标题</h5>
-                            <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus>
+                            <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus maxlength=20>
                         </div>
                         <div class="input-group">
                             <h5>地址</h5>
-                            <input id="country" type="text" autocomplete=true placeholder="详细到省，县，乡，村" required>
+                            <input id="country" type="text" autocomplete=true placeholder="详细到省，县，乡，村" required maxlength=20>
                         </div>
                         <div class="input-group">
                             <h5>发布信息</h5>
-                            <input id="author" type="text" autocomplete=true placeholder="填写作者"> 
-                            <input id="publish-time" type="text" autocomplete=true placeholder="填写发布时间"> 
+                            <input id="author" type="text" autocomplete=true placeholder="填写作者" maxlength=10> 
+                            <input id="publish-time" type="text" autocomplete=true placeholder="填写发布时间" maxlength=10> 
                         </div>
                         <div class="input-group">
                             <h5>拾取经纬坐标</h5>
@@ -83,8 +83,8 @@
                         <div class="rich-editor"></div>
                     </div>
                     <div class="row">
-                        <button for="editor" type="submit">提交</button>
                         <button id="save">保存</button>
+                        <button for="editor" type="submit">提交</button>
                     </div>
                 </section>
                 <div class="status-bar">

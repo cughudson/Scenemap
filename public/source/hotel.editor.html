@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="../css/component.css"/>
         <link rel="stylesheet" type="text/css" href="../css/page.css"/>
         <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css"/>
         <!-- <script type="text/javascript" src="../js/"></script> -->
         <!-- <script type="text/javascript" src="../js/"></script> -->
     </head>
@@ -29,26 +30,50 @@
         </header>
         <main class="managment">
             <div class="menu">
-                <div class="clickable"><span>新建景点</span></div>
-                <div class="clickable"><span>景点管理</span></div>
-                <div class="clickable"><span>新建民宿</span></div>
-                <div class="clickable"><span>民宿管理</span></div>
-                <div class="clickable"><span>系统管理</span></div>
-                <div class="clickable"><span>运行状态</span></div>
+                <div class="clickable" id="new-scene"><span>新建景点</span></div>
+                <div class="clickable" id="scene-managment"><span>景点管理</span></div>
+                <div class="clickable" id="new-hotel"><span>新建民宿</span></div>
+                <div class="clickable" id="hotel-managment"><span>民宿管理</span></div>
+                <div class="clickable" id="sys-managment"><span>系统管理</span></div>
+                <div class="clickable" id="sys-state"><span>运行状态</span></div>
             </div>
             <div class="editor-wrapper">
                 <section class="editor">
-                    <h1>新建景点</h1>
+                    <h1>新建民宿</h1>
                     <form method="post" action="" id="editor">
-                        <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus maxlength="20">
-                        <input id="country" type="text" autocomplete=true placeholder="输入乡镇名称" required>
-                        <input id="telephone" type="number" autocomplete="false" placeholder="输入电话号码">
-                        <form class="upload-area" id="upload">
-                            <button><input type="file" multiple=false/><span>选择封面</span></button>
-                            <button for="upload">上传</button>
+                        <div class="input-group">
+                            <h5>标题</h5>
+                            <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus>
+                        </div>
+                        <div class="input-group">
+                            <h5>地址</h5>
+                            <input id="country" type="text" autocomplete=true placeholder="详细到省，县，乡，村" required maxlength=20>
+                        </div>
+                        <div class="input-group">
+                            <h5>电话</h5>
+                            <input id="telephone" type="text" autocomplete="false" placeholder="输入电话号码" required maxlength=20>
+                        </div>
+                        <div class="input-group">
+                            <h5>介绍信息</h5>
+                            <textarea id="intro" maxlength="300" placeholder="填写民宿的简介，不超过300字"></textarea>
                         </div>
                     </form>
-                    <div class="rich-editor"></div>
+                    <form class="upload-area" id="upload">
+                        <h5>上传封面照片</h5>
+                        <div class="info notice"><li class="fa fa-info"></li><span>上传照片不得超过8张照片，照片需小于1M且长宽比为16:9，上传完成后，需选择其中的一张作为封面</span></div>
+                        <div class="button-area">
+                            <div class="upload-file clearfix">
+                                <span class="btn">选择</span>
+                                <input type="file" multiple=false/>
+                            </div>
+                            <button for="upload">上传</button>
+                        </div>
+                        <div id="picture-area">上传的图片将显示在这里</div>
+                    </form>
+                    <div class="row">
+                        <button id="save">保存</button>
+                        <button for="editor" type="submit">提交</button>
+                    </div>
                 </section>
                 <div class="status-bar"></div>
             </div>

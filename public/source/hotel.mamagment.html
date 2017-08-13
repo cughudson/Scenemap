@@ -39,13 +39,15 @@
             </div>
             <div class="managment-wrapper">
                 <section class="managment">
-                    <h1>景点管理</h1>
+                    <h1>民宿管理</h1>
                     <section>
                         <div class="table">
-                            <!-- <div class="filter">
-                                <span class="nature clickable">自然</span>
-                                <span class="culture clickable">人文</span>
-                            </div> -->
+                            <div class="info notice"><li class="fa fa-info"><span>下表中仅显示未删除的条目，对于已经删除的条目，请直接在数据库中进行修改</span></li></div>
+                            <div class="filter clearfix">
+                                <span class="haspublish clickable">已发布</span>
+                                <span class="culture clickable">未发布</span>
+                                <span class="culture clickable">封面</span>
+                            </div> 
                             <table>
                                 <tr class="thead">
                                     <td class="index">序号</td>
@@ -54,19 +56,19 @@
                                     <td class="visit">访问数量</td>
                                     <td class="toolbar">操作</td>
                                 </tr>
-                                <tr>
+                                <tr id="">
                                     <td class="index">1</td>
                                     <td class="title">关于****的风景区最高峰</td>
                                     <td class="time">20171118</td>
                                     <td class="visit">12</td>
                                     <td class="toolbar">
-                                        <span class="edit"><i class="fa fa-edit fa-lg"></i></span>
-                                        <span class="post"><i class="fa fa-arrow-up fa-lg"></i></span>
-                                        <span class="slide"><i class="fa fa-send fa-lg"></i></span>
-                                        <span class="delete"><i class="fa fa-close fa-lg"></i></span>
+                                        <span class="edit" title="编辑"><i class="fa fa-edit fa-lg"></i></span>
+                                        <span class="post" title="发布"><i class="fa fa-arrow-up fa-lg"></i></span>
+                                        <span class="slide" title="设为封面"><i class="fa fa-send fa-lg"></i></span>
+                                        <span class="delete" title="删除"><i class="fa fa-close fa-lg"></i></span>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="">
                                     <td class="index">2</td>
                                     <td class="title">关于****的</td>
                                     <td class="time">20171118</td>

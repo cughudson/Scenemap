@@ -80,93 +80,97 @@
 }
 
 //scene, hotel
-main.scene,main.hotel{
-    article,aside{
-        float:right;
-        height:auto;
-    }
-    @media screen and (min-width:960px){
-        article{
-            padding-left: 36px;
-            width:70%;
-        }
-        aside{
-            padding-right: 20px;
-            float:right;
-            width:30%;
-        }
-    }
-     @media screen and (max-width:960px){
-        article{
-            width:100%;
-        }
-        aside{
-            float:right;
-            width:100%;
-        }
-    }
-    article{
-            margin-bottom:64px; 
-            h1{
-                text-align: center;
-                font-family: Arial, Helvetica, sans-serif;
-                line-height: 200%;
-                padding-bottom: 16px;
-            }
-            .meta-data{
-                padding: 12px;
-                margin-bottom: 42px;
-                border-bottom:  1px solid @lightBlack;
-                span{
-                    margin:0 8px;
-                }
-                .post-info{
-                    float:left;
-                    line-height: 150%;
-                }
-                .view-number{
-                    float:right;
-                }
-                .social{
-                    float:right;
-                }
-            }
-        }
-    aside{
-        #static-map{
-            padding-bottom: 16px;
-            #map{
-                width:100%;
-                padding-bottom:61.8%;
-                background: gray;
-            }
-            .address{
-                line-height: 150%;
-                padding: 24px 0;
-                li{
-                    padding: 0 6px 0 4px;
-                    display: inline-block;
-                    color:@skyBlue;
-                }
-            }
-        }
 
-        #recommand-wrapper{
-            margin-bottom: 42px;
-            padding-top: 16px;
-            border-top:1px solid @lightBlack;
-            h3{
+article{
+        @media screen and (min-width:960px){
+            padding-left: 48px;
+        }
+        @media screen and (max-width:960px){
+            padding: 2%;
+        }
+        h1{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 200%;
+            padding-bottom: 16px;
+        }
+        .meta-data{
+            padding: 12px;
+            margin: 16px 0;
+            border-bottom:  1px solid @lightBlack;
+            font-size: .8rem;
+            span{
+                margin:0 8px;
+            }
+            .post-info{
+                float:left;
                 line-height: 150%;
-                padding: 16px 0;
-                li{
-                    padding: 0 8px 0 4px;
-                    display:inline-block;
-                    color:red;
-                }
             }
-            .recommand{
-                text-align: justify;
+            .view-number{
+                float:right;
             }
+            .love{
+                float:right;
+            }
+        }
+        #article-content{
+            line-height: 150%;
+            padding: 32px 16px;
+        }
+        .share{
+            margin: 24px 0;
+        }
+    }
+aside{
+    @media screen and (max-width:860px){
+        #static-map,#recommand-wrapper{
+            padding: 4%;
+        }
+    }
+    #static-map{
+        h3{
+            line-height: 150%;
+            li{
+                padding: 0 8px 0 4px;
+                display:inline-block;
+                color:red;
+            }
+        }
+        #map{
+            width:100%;
+            padding-bottom:61.8%;
+            background: gray;
+        }
+        .address{
+            line-height: 150%;
+            padding: 24px 0;
+            font-size: .8rem;
+            .title{
+                font-weight:bold;
+                padding-right:6px;
+            }
+            li{
+                padding: 0 6px 0 4px;
+                display: inline-block;
+                color:red;
+            }
+        }
+    }
+
+    #recommand-wrapper{
+        margin-bottom: 42px;
+        padding-top: 16px;
+        border-top:1px solid @lightBlack;
+        h3{
+            line-height: 150%;
+            li{
+                padding: 0 8px 0 4px;
+                display:inline-block;
+                color:red;
+            }
+        }
+        .recommand{
+            text-align: center;
         }
     }
 }
@@ -190,9 +194,6 @@ main.scene,main.hotel{
             .input-group{
                 width:100%;
                 padding: 12px 0 0 0;
-                h5{
-                    padding: 12px 0;
-                }
                 input[type="text"]{
                     width:320px;
                     display: inline-block;
@@ -202,6 +203,12 @@ main.scene,main.hotel{
                             margin-left: 20px;
                         }
                     }
+                }
+                textarea{
+                    width:640px;
+                    resize:none;
+                    scroll:none;
+                    height:96px;
                 }
             } 
         }
@@ -219,6 +226,7 @@ main.scene,main.hotel{
     #picture-area{
         background:@lightGray;
         padding:24px;
+        margin:12px 0 0 0;
         max-width:640px;
         border-radius: 4px;
         border:1.5px dotted gray;
@@ -313,6 +321,7 @@ main.login{
     background: @white;
     top:100px;
     position: relative;
+    box-sizing: border-box;
     @media screen and (min-width:640px){
         border:1px solid @boxShadowColor;
         border-radius: 4px;
@@ -332,6 +341,7 @@ main.login{
         input{
             width:100%;
             margin:12px 0;
+            box-sizing: border-box;
         }
         button{
             margin-top: 24px;
