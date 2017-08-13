@@ -142,19 +142,29 @@ main.scene,main.hotel{
             }
             .address{
                 line-height: 150%;
-                padding: 12px 0;
+                padding: 24px 0;
+                li{
+                    padding: 0 6px 0 4px;
+                    display: inline-block;
+                    color:@skyBlue;
+                }
             }
         }
 
-        #recommand{
+        #recommand-wrapper{
             margin-bottom: 42px;
             padding-top: 16px;
             border-top:1px solid @lightBlack;
             h3{
                 line-height: 150%;
                 padding: 16px 0;
+                li{
+                    padding: 0 8px 0 4px;
+                    display:inline-block;
+                    color:red;
+                }
             }
-            .thumnails{
+            .recommand{
                 text-align: justify;
             }
         }
@@ -166,22 +176,52 @@ main.scene,main.hotel{
     width:100%;
     text-align: center;
 }
-.editor-wrapper{
-    position: relative;
-    left:240px;
-    right:0px;
-    height:auto;
-    padding-top: 42px;
-    .editor{
+//管理页面
+.editor-wrapper,.managment-wrapper{
+    .editor,.managment{
         padding-left: 42px;
         h1{
             padding: 12px 0;
             width:480px;
             border-bottom: 1px solid gray;
-            form{
-                
-            }
         }
+        form{
+            margin-top:16px;
+            .input-group{
+                width:100%;
+                padding: 12px 0 0 0;
+                h5{
+                    padding: 12px 0;
+                }
+                input[type="text"]{
+                    width:320px;
+                    display: inline-block;
+                    &#publish-time,&#author{
+                        width:150px;
+                        &:last-child{
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+}
+.upload-area{
+    margin: 24px 0;
+    padding:24px 0;
+    border-top:1px solid gray;
+    border-bottom:1px solid gray;
+    width:640px;
+    .button-area{
+        display: block;
+    }
+    #picture-area{
+        background:@lightGray;
+        padding:24px;
+        max-width:640px;
+        border-radius: 4px;
+        border:1.5px dotted gray;
     }
 }
 //map page
@@ -203,41 +243,80 @@ header.map{
         width:100%;
         height:100%;
         position: relative;
+        z-index: -1;
     }
     #switch{
+        z-index: 10;
         position: absolute;
         right:16px;
         top:16px;
-        background: white;
+        height:48px;
+        background:fadeout(black, 80%);
+        color:white;
         box-shadow: 1px 1px 1px 1px gray;
         border-radius: 2px;
         span{
-            padding: 8px;
+            height:48px;
+            width:81px;
+            display: inline-block;
+            line-height: 48px;
             font-size: 12px;
+            text-align: center;
+            float:left;
+            &:hover{
+                background: fadeout(black,90%);
+            }
+            &.checked{
+                border-bottom: 4px solid @skyBlue;
+            }
+            &:first-child{
+                border-right:1px solid darken(@lightGray,40%);
+            }
+            &:last-child{
+                border-left:1px solid darken(@lightGray,40%);
+            }
         }
     }
-    #lengend{
+    .logo{
         position: absolute;
-        bottom: 16px;
-        right:16px;
-        span{
-            padding: 8px;
-            font-size: 12px;
+        bottom: 32px;
+        @media screen and (min-width:640px){
+            right:@menuHeight*0.5;
+        }
+        @media screen and (max-width:640px){
+            right:@menuHeight*0.25;
+        }
+        height:64px;
+        width:auto;
+        a{
+            display: block;
+            height:100%;
+            width:100%;
+            padding: 8px 0;
+            img{
+                height:inherit;
+                width:auto;
+            }
         }
     }
 }
 // login page
 body.login{
-    background: @slightGray;
+    @media screen and (min-width:640px){
+        background: @lightGray;
+    }
+    @media screen and (max-width:640px){
+        background: @white;
+    }
 }
 main.login{
     background: @white;
     top:100px;
     position: relative;
-    border-radius: 4px;
-    box-shadow: 1px 1px 8px 0px @boxShadowColor;
-    border:1px solid @boxShadowColor;
     @media screen and (min-width:640px){
+        border:1px solid @boxShadowColor;
+        border-radius: 4px;
+        box-shadow: 1px 1px 8px 0px @boxShadowColor;
         width:320px;
         margin:auto;
         padding: 48px 48px;

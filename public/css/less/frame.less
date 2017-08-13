@@ -17,6 +17,7 @@ body{
 }
 main{
     height:auto;
+    top:64px;
 }
 main.index{
     width:100%;
@@ -42,17 +43,27 @@ main.scene, main.hotel{
 }
 main.managment{
     width:100%;
+    min-width:820px;
     height:auto;
     position:relative;
-}
-.managment .menu{
-    position: fixed;
-    width:320px;
-    height:100%;
-    z-index: 1;
-    div{
-        width:100%;
-        text-align: center;
+    .menu{
+        position: fixed;
+        padding-top: 64px;
+        width:240px;
+        float:left;
+        height:100%;
+        z-index: 1;
+    }
+    .managment-wrapper,.editor-wrapper{
+        position: absolute;
+        left:240px;
+        right:0px;
+        height:auto;
+        padding-top: 42px;
+        margin-bottom: 128px;
+        .editor{
+            position:relative;
+        }
     }
 }
 img{

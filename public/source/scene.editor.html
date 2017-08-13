@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="../css/component.css"/>
         <link rel="stylesheet" type="text/css" href="../css/page.css"/>
         <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css"/>
         <!-- <script type="text/javascript" src="../js/"></script> -->
         <!-- <script type="text/javascript" src="../js/"></script> -->
     </head>
@@ -29,12 +30,12 @@
         </header>
         <main class="managment">
             <div class="menu">
-                <div class="clickable"><span>新建景点</span></div>
-                <div class="clickable"><span>景点管理</span></div>
-                <div class="clickable"><span>新建民宿</span></div>
-                <div class="clickable"><span>民宿管理</span></div>
-                <div class="clickable"><span>系统管理</span></div>
-                <div class="clickable"><span>运行状态</span></div>
+                <div class="clickable" id="new-scene"><span>新建景点</span></div>
+                <div class="clickable" id="scene-managment"><span>景点管理</span></div>
+                <div class="clickable" id="new-hotel"><span>新建民宿</span></div>
+                <div class="clickable" id="hotel-managment"><span>民宿管理</span></div>
+                <div class="clickable" id="sys-managment"><span>系统管理</span></div>
+                <div class="clickable" id="sys-state"><span>运行状态</span></div>
             </div>
             <div class="editor-wrapper">
                 <section class="editor">
@@ -47,26 +48,36 @@
                         <div class="input-group">
                             <h5>地址</h5>
                             <input id="country" type="text" autocomplete=true placeholder="详细到省，县，乡，村" required>
-                        </div> 
+                        </div>
+                        <div class="input-group">
+                            <h5>发布信息</h5>
+                            <input id="author" type="text" autocomplete=true placeholder="填写作者"> 
+                            <input id="publish-time" type="text" autocomplete=true placeholder="填写发布时间"> 
+                        </div>
                         <div class="input-group">
                             <h5>拾取经纬坐标</h5>
                             <div class="">
-                                <div role="button">打开地图</button>
-                                <div class="geo-data">
+                                <div role="button" class="btn">打开地图</div>
+                                <div class="geo-data bubble">
                                     <span class="data">经纬度显示在这里</span>
-                                    <span>X</span>
+                                    <span class="close">X</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <h5>上传封面照片</h5>
-                            <form class="upload-area" id="upload">
-                                <button><input type="file" multiple=false/></button>
-                                <button for="upload">上传</button>
-                            </form>
-                        </div>
-                        <div class="article-content hidden-data"></div>
                     </form>
+                    <form class="upload-area" id="upload">
+                        <h5>上传封面照片</h5>
+                        <div class="info notice"><li class="fa fa-info"></li><span>从本地电脑上选择一张照片作为这篇文章的封面，上传的照片小于1M，长宽比为16:9</span></div>
+                        <div class="button-area">
+                            <div class="upload-file clearfix">
+                                <span class="btn">选择</span>
+                                <input type="file" multiple=false/>
+                            </div>
+                            <button for="upload">上传</button>
+                        </div>
+                        <div id="picture-area">上传的图片将显示在这里</div>
+                    </form>
+                    <div class="article-content hidden-data"></div>
                     <div class="rich-editor-wrapper">
                         <h5>文章内容</h5>
                         <div class="rich-editor"></div>

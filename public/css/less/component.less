@@ -2,7 +2,7 @@
 header{
     width:100%;
     height: @menuHeight;
-    position: relative;
+    position: fixed;
     box-shadow: 0px 0 11px 0px lighten(@lightBlack,40%);
     min-width: 640px;
     z-index: 10000;
@@ -78,20 +78,22 @@ button,.btn,input[type="file"],input[type='button']{
     background: @white;
     font-size: .8rem;
     margin:12px 0;
-    letter-spacing: 4px;
+    letter-spacing: 1px;
     cursor: pointer;
     background:@skyBlue;
-    border: 1px solid darken(@skyBlue,5%);
+    border: 1px solid @darkSkyBlue;
     color:@white;
+    display: inline-block;
+    background-image:-webkit-linear-gradient(top,#4d90fe,#4787ed);
+    font-weight:bold;
+    margin-right:12px;
     &:active{
         will-change:background;
         transition: border .5s ease-in-out;
-        background:darken(@skyBlue, 10%);
+        background:@darkSkyBlue;
     }
     &:hover{
-        will-change: background;
-        transition:background .5s ease-in-out;
-        background:darken(@skyBlue,5%);
+
     }
 }
 input[type='text'], textarea,input[type='password']{
@@ -111,14 +113,11 @@ input[type='text'], textarea,input[type='password']{
 a.btn{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5rem;
+    display: inline-block;
     color:@lightBlack;
     display: inline-block;
     background: @skyBlue;
 }
-.btn{
-    cursor: pointer;
-}
-
 //current position
 .position{
     width:100%;
@@ -128,30 +127,35 @@ a.btn{
 .share{
     margin:24px;
 }
-.circle-thumnail{
+.recommand-item{
     display: inline-block;
-    font-size: 0;
-    line-height:0;
-    width:30px;
-    height:30px;
-    margin:6px;
-    border-radius: 15px;
+    width:24%;
+    margin:2% 4.5%;
+    height:72px;
     overflow: hidden;
-    img{
-        height:100%;
-        width:auto;
-    }
-    &:hover{
+    box-sizing: border-box;
+    float:left;
+    border:1px solid @lightBlack;
+    text-decoration: none;
+    div.thumnail{
+        height:40px;
+        overflow: hidden;
         img{
-            filter: grayscale(100%);
-            transition:  filter .5s ease-in-out;
+            height:60px;
+            white:auto;
         }
     }
-    &:not(:hover){
-        img{
-            filter: grayscale(0%);
-            transition:  filter .5s ease-in-out;   
-        }
+   span.visit-num{
+        display: inline-block;
+        width:100%;
+        line-height: 32px;
+        text-align: center;
+        height:32px;
+        font-size: @normal*0.8;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color:@lightBlack;
     }
 }
 //hotel item
@@ -204,11 +208,6 @@ a.btn{
 }
 //管理页面菜单
 .managment .menu{
-    position: fixed;
-    width:240px;
-    height:100%;
-    z-index: 1;
-    padding-top: 64px;
     background:@white;
     border-right:1px solid lighten(@lightBlack,50%);
     div{
@@ -224,6 +223,12 @@ a.btn{
         span{
             display: block;
             color:@lightBlack;
+            &:hover{
+                background:darken(@lightGray,5%);
+            }
+            &:active{
+                background:darken(@lightGray,15%);
+            }
         }
     }
 }
@@ -234,10 +239,11 @@ a.btn{
     border-top:1px solid lighten(@lightBlack, 50%); 
     bottom: 0;
     position:fixed;
+    background: @white;
 }
 //管理页面中的表格
 .table{
-    padding: 32px 0;
+    padding: 32px 0 18px 0;
     .filter{
         padding: 12px;
         color:lightblue;
@@ -262,14 +268,16 @@ a.btn{
                 padding: 6px 12px;
                 border-collapse: collapse;
                 font-size: .8rem;
+                text-align: center;
+
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 &.index{width:10%}
                 &.title{width:35%}
                 &.time{width:15%}
                 &.visit{width:15%}
-                &.toolbar{width:25%}
-            }
-            &:hover{
-                background: lighten(@lightBlack,85%);
+                &.toolbar{width:25%;min-width:208px}
             }
         }
         .thead{
@@ -287,9 +295,98 @@ a.btn{
             }
             td.toolbar{
                 span{
-                    padding: 0 4px;
+                    padding: 0 8px;
+                    &:hover{
+                        color:@lightSkyBlue;
+                    }
+                    &:active{
+                        color:@darkSkyBlue;
+                    }
+                }
+                .fa{
+                    cursor:pointer;
                 }
             }
         }
+    }
+}
+.pagenavi{
+    span{
+        display: block;
+        float: left;
+        padding: 8 24px;
+        margin: 0 12px;
+        &:hover{
+            color:@lightSkyBlue;
+        }
+        &:active{
+            color:@darkSkyBlue;
+        }
+    }
+    .fa{
+        cursor: pointer;
+    }
+}
+.bubble{
+    display:inline-block;
+    font-size: .6rem;
+    border: 1px solid @lightBlack;
+    padding: 0 6px;
+    margin:6px 8px;
+    border-radius: 6px;
+    span.data{
+        display: inline-block;
+        padding: 6px 6px 8px 6px;
+    }
+    span.close{
+        display: inline-block;
+        padding: 6px 2px 6px 8px;
+        font-size: .7rem;
+        border-left:1px solid @lightBlack;
+        cursor:pointer;
+    }
+}
+.upload-file{
+    display: inline-block;
+    position: relative;
+    input[type="file"]{
+        opacity: 0;
+        width:100px;
+        display: inline-block;
+        left:-100px;
+        position: absolute;
+        left:0;
+    }
+    span{
+        display: inline-block;
+        position: relative;
+    }
+}
+//信息控件
+.info{
+    font-size:.7rem;
+    display: inline-block;
+    border-radius: 4px;
+    margin:12px 0;
+    font-weight:bold;
+    li{
+        display: inline-block;
+        padding:0 6px 0 16px;;
+    }
+    span{
+        line-height: 24px;
+        padding: 0 16px 0 6px;
+    }
+    &.warnning{
+        border:1.5px solid @warnning;
+        color:@warnning;
+    }
+    &.error{
+        border: 1.5px solid @error;
+        color:@error;
+    }
+    &.notice{
+        border: 1.5px solid @notice;
+        color:@notice;
     }
 }
