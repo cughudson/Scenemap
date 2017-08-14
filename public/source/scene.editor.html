@@ -42,15 +42,24 @@
                     <h1>新建景点</h1>
                     <form method="post" action="" id="editor">
                         <div class="input-group">
-                            <h5>标题</h5>
+                            <h5>标题：</h5>
                             <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus maxlength=20>
                         </div>
                         <div class="input-group">
-                            <h5>地址</h5>
+                            <h5>地址：</h5>
                             <input id="country" type="text" autocomplete=true placeholder="详细到省，县，乡，村" required maxlength=20>
                         </div>
+                        <div class="input-group radio">
+                            <h5>景点类别：</h5>
+                            <span>
+                            	<input id="nature-scene" type="radio" name="scene-type" value="nature"><label for="nature-scene">自然风景</label>
+                            </span>
+                            <span>
+                            	<input id="culture-scene" type="radio" name="scene-type" value="culture"><label for="culture-scene">人文风景</label>
+                            </span>
+                        </div>
                         <div class="input-group">
-                            <h5>发布信息</h5>
+                            <h5>发布信息：</h5>
                             <input id="author" type="text" autocomplete=true placeholder="填写作者" maxlength=10> 
                             <input id="publish-time" type="text" autocomplete=true placeholder="填写发布时间" maxlength=10> 
                         </div>
@@ -87,6 +96,18 @@
                         <button for="editor" type="submit">提交</button>
                     </div>
                 </section>
+                <div id="overlay" class="hidden"></div>
+                <div id="geo-picker-pannel">
+                    <div class="close-wrapper clearfix">
+                        <span class="close clickable"><li class="fa fa-close fa-2x"></li></span>
+                    </div>
+                    <div id="map"></div>
+                    <div class="info notice"><li class="fa fa-info"></li><span>单击右键菜单拾取点位信息，确认，保存拾取数据，取消，放弃拾取</span></div>
+                    <div class="toolbar">
+                        <div class="btn draggable" id="ok">确认</div>
+                        <div class="btn draggable" id="cancel">取消</div>
+                    </div>
+                </div>
                 <div class="status-bar">
                     现在时间是：；
                 </div>
