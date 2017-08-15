@@ -14,8 +14,11 @@
         <link rel="stylesheet" type="text/css" href="../css/page.css"/>
         <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
         <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css"/>
-        <!-- <script type="text/javascript" src="../js/"></script> -->
-        <!-- <script type="text/javascript" src="../js/"></script> -->
+        <link rel="stylesheet" type="text/css" href="../css/quilljs.snow.editor.css"/>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=cUWciM1b3cacMFaSKRgTGT9W5yfh7RF7"></script>
+        <script type="text/javascript" src="../plugin/quill/quill.js"></script>
+        <script type="text/javascript" src="../js/lib/zepto.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
     </head>
     <body>
         <header>
@@ -60,8 +63,8 @@
                         </div>
                         <div class="input-group">
                             <h5>发布信息：</h5>
-                            <input id="author" type="text" autocomplete=true placeholder="填写作者" maxlength=10> 
-                            <input id="publish-time" type="text" autocomplete=true placeholder="填写发布时间" maxlength=10> 
+                            <input id="author" type="text" autocomplete=true placeholder="填写作者" maxlength=10 required> 
+                            <input id="publish-time" type="text" autocomplete=true placeholder="填写发布时间" maxlength=10 required> 
                         </div>
                         <div class="input-group">
                             <h5>拾取经纬坐标</h5>
@@ -89,7 +92,7 @@
                     <div class="article-content hidden-data"></div>
                     <div class="rich-editor-wrapper">
                         <h5>文章内容</h5>
-                        <div class="rich-editor"></div>
+                        <div id="rich-editor"></div>
                     </div>
                     <div class="row">
                         <button id="save">保存</button>

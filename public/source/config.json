@@ -13,6 +13,13 @@
         "user":"hudson",
         "psd":"13343408355"
     },
+    "position":{
+        "city":"",
+        "geo":{
+            "lat":"",
+            "lng":"",
+        }
+    },
     "license":"MIT",
     "version":"20170820"
 }

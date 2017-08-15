@@ -472,7 +472,7 @@ a.btn {
 }
 #geo-picker-pannel .close-wrapper .close {
   display: block;
-  float: right;
+  float: left;
   color: #a8a8a8;
 }
 #geo-picker-pannel .close-wrapper .close:hover {
@@ -485,6 +485,8 @@ a.btn {
   width: 100%;
   padding-bottom: 61.8%;
   background: #f5f5f5;
+  margin: 12px 0;
+  border: 1px solid #a8a8a8;
 }
 #geo-picker-pannel .toolbar {
   position: relative;
@@ -494,4 +496,20 @@ a.btn {
 }
 #geo-picker-pannel .toolbar .btn {
   float: right;
+}
+.close-right {
+  right: -100% !important;
+  transition: right 0.5s ease-in-out;
+  will-change: right;
+}
+.close-left {
+  left: -100% !important;
+  transition: left 0.5s ease-in-out;
+  will-change: left;
+}
+.none {
+  display: none;
+}
+.block {
+  display: block;
 }
