@@ -513,3 +513,23 @@ a.btn {
 .block {
   display: block;
 }
+.rich-editor-wrapper {
+  padding: 24px 0;
+}
+.rich-editor-wrapper .ql-toolbar {
+  width: 100%;
+  min-width: 480px;
+  max-width: 680px;
+}
+.rich-editor-wrapper #rich-editor {
+  position: relative;
+  left: 0;
+  width: 100%;
+  min-width: 480px;
+  max-width: 680px;
+  height: 480px;
+}
+.rich-editor-wrapper .drag-bar {
+  height: 32px;
+  width: 100%;
+}

@@ -64,15 +64,16 @@
                         <div class="input-group">
                             <h5>发布信息：</h5>
                             <input id="author" type="text" autocomplete=true placeholder="填写作者" maxlength=10 required> 
-                            <input id="publish-time" type="text" autocomplete=true placeholder="填写发布时间" maxlength=10 required> 
+                            <input id="publish-time" type="text" role="time" format="YYYY-MM-DD" autocomplete=true placeholder="填写发布时间" maxlength=10 required> 
                         </div>
                         <div class="input-group">
                             <h5>拾取经纬坐标</h5>
-                            <div class="">
+                            <div class="geo-picker-btn">
                                 <div role="button" class="btn">打开地图</div>
                                 <div class="geo-data bubble">
                                     <span class="data">经纬度显示在这里</span>
                                     <span class="close">X</span>
+                                    <input type="hidden" id="geoCorrdinate" value="" name="geoCorrdinate">
                                 </div>
                             </div>
                         </div>
@@ -92,7 +93,9 @@
                     <div class="article-content hidden-data"></div>
                     <div class="rich-editor-wrapper">
                         <h5>文章内容</h5>
-                        <div id="rich-editor"></div>
+                        <div id="rich-editor">
+                        </div>
+                        <div class="drag-bar"></div>
                     </div>
                     <div class="row">
                         <button id="save">保存</button>
@@ -105,7 +108,10 @@
                         <span class="close clickable"><li class="fa fa-close fa-2x"></li></span>
                     </div>
                     <div id="map"></div>
-                    <div class="info notice"><li class="fa fa-info"></li><span>单击右键菜单拾取点位信息，确认，保存拾取数据，取消，放弃拾取</span></div>
+                    <div id="pickerPoint">
+                        <span class="data"></span>
+                    </div>
+                    <div class="info notice"><li class="fa fa-info"></li><span>双击地图标定所需要选取的坐标点，确认，保存拾取数据，取消，放弃拾取</span></div>
                     <div class="toolbar">
                         <div class="btn draggable" id="ok">确认</div>
                         <div class="btn draggable" id="cancel">取消</div>
