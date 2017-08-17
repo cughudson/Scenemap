@@ -1,69 +1,89 @@
 (function(win,doc){
 
     //const value
-    const NATURE = 0;
-    const CULTURE = 1;
-    const HOTEL = 2;
+    const NATURE = "NATURE";
+    const CULTURE = "CULTURE";
+    const HOTEL = "HOTEL";
     //url
-    const NATUREURL = "";
-    const CULTUREURL = "";
-    const HOTELURL = "";
+    const NATUREICONURL = "";
+    const CULTUREICONURL = "";
+    const HOTELICONURL = "";
 
     const MARKERTEMPLATE = "";
 
-    var item = function(id, geoCoordinate, type,thumnail, address,name){
+    var item = function(id, info){
         this.id = id;
-        this.geoCoordinate = geoCoordinate;
-        this.type = type;
-        this.thumnail = thumnail;
-        this.address = address;
-        this.name = name;
+        this.info = info;
         return this;
     };
-
-    var hudMap = function(map){
-        if(a instanceof BMap){
-            console.log("init the map failed")
-        }
-        this.map = BMap;
-        this.items = [];
-        this.add  =function(item){
-            var id = item.id;
-            var signal = false;
-            for(var i = 0; i < this.items.length; i++){
-                if(this.items[i].id == id){
-                    signal = true;
-                    console.warn("添加失败，集合中已经有id为"+id+"的标签");
-                    return false;
-                }
-            }
-            if(!signal){
-                this.items.push(item);
-                return true;
-            }
-        };
-        this.remove = function(item){
-            var id = item.id;
-            var signal = false;
-            for(var i = 0; i < this.items.length; i++){
-                if(this.items[i].id == id){
-                    signal = true;
-                    this.items.pop(this.item[i]);
-                    return true;
-                }
-            }
-            if(!signal)
-                console.warn("删除失败，集合中不存在id为"+id+"的标签");
+    var CustomMap = function(id){
+        //
+        //BMap is baidu map
+        //
+        this.id = id.replace("#","");
+        //holding the markers that has not adding to the map
+        // map holding the marker that is active;
+        //markers 始终保持不变
+        this.markers = [];
+        this.item = [];
+        this.create = function(center,level){
+            try{
+                this.tempMap = new BMap.Map(this.id);
+                tempMap.enableScrollWheelZoom();
+                tempMap.disableDoubleClickZoom();
+                tempMap.centerAndZoom(new BMap.Point(center.lng, center.lat), level);
+                return this;
+            }catch(e){
+                console.error(e.message);
                 return false;
             }
         };
-        this.findItem = function(item){
-            var id = item.id;
+        this.create = function(city,level){
+            try{
+                this.tempMap = new BMap.Map(this.id);
+                tempMap.enableScrollWheelZoom();
+                tempMap.disableDoubleClickZoom();
+                tempMap.centerAndZoom(city, level);
+
+                return this;
+            }catch(e){
+                console.error(e.message);
+                return false;
+            }
+        };
+        this.createMarker = function(url, item){
+            var opt = {
+                icon:new BMap.Icon(url,this.map.Size(32,32))
+            };
+            let marker = new BMap.Marker(item.point,opt);
+            marker.id = item.info.id;
+            marker.type = item.type;
+            marker.item = item;
+            return marker;
+        };
+        this.constructInfoWindow = function(marker){
+
+        }
+        this.getDataById = function(id){
+
+        };
+        this.removeMarker = function(marker){
+
+            if(arg instanceof Array){
+                for(var i = 0; i < arg.length; i++){
+                    this.map.removeOverlay(arg[i]);
+                }
+            }else{
+                this.map.addOverlay(arg);
+            }
+        };
+        this.findMarker = function(marker){
+            var id = marker.id;
             var signal = false;
-            for(var i = 0; i < this.items.length; i++){
-                if(this.items[i].id == id){
+            for(var i = 0; i < this.markers.length; i++){
+                if(this.markers[i].id == id){
                     signal = true;
-                    return this.items[i];
+                    return this.markers[i];
                 }
             }
             if(!signal){
@@ -72,19 +92,26 @@
             }
 
         };
-        this.addOverlay = function(item){
-
-        };
-        this.removeOverlay = function(type){
-            switch(type){
-                case NATURE:
-                break;
-                case CULTURE:
-                break;
-                case HOTEL:
-                break;
-                default:
+        this.addMarker = function(arg){
+            if(arg instanceof Array){
+                for(var i = 0; i < arg.length; i++){
+                    this.map.addOverlay(arg[i]);
+                }
+            }else{
+                this.map.addOverlay(arg);
             }
         };
-    window.hudMap = hudMap;
+        this.filter = function(type){
+
+            var tempArr = [];
+            for(var i = 0; i < this.markers.length; i++){
+                let tempMarker = this.markers[i];
+                if(tempMarker.type == type){
+                    tempArr.push(tempMarker[i]);
+                }
+            }
+            return tempArr;
+        };
+    }
+    window.CustomMap = CustomMap;
 }(window, document))

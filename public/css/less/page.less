@@ -82,46 +82,46 @@
 //scene, hotel
 
 article{
-        @media screen and (min-width:960px){
-            padding-left: 48px;
+    @media screen and (min-width:960px){
+        padding-left: 48px;
+    }
+    @media screen and (max-width:960px){
+        padding: 2%;
+    }
+    h1{
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 200%;
+        padding-bottom: 16px;
+        padding-left:16px;
+    }
+    .meta-data{
+        padding: 12px;
+        margin: 16px 0;
+        border-bottom:  1px solid @lightBlack;
+        font-size: .8rem;
+        span{
+            margin:0 8px;
         }
-        @media screen and (max-width:960px){
-            padding: 2%;
-        }
-        h1{
-            text-align: left;
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 200%;
-            padding-bottom: 16px;
-            padding-left:16px;
-        }
-        .meta-data{
-            padding: 12px;
-            margin: 16px 0;
-            border-bottom:  1px solid @lightBlack;
-            font-size: .8rem;
-            span{
-                margin:0 8px;
-            }
-            .post-info{
-                float:left;
-                line-height: 150%;
-            }
-            .view-number{
-                float:right;
-            }
-            .love{
-                float:right;
-            }
-        }
-        #article-content{
+        .post-info{
+            float:left;
             line-height: 150%;
-            padding: 32px 16px;
         }
-        .share{
-            margin: 24px 0;
+        .view-number{
+            float:right;
+        }
+        .love{
+            float:right;
         }
     }
+    #article-content{
+        line-height: 150%;
+        padding: 32px 16px;
+    }
+    .share{
+        margin: 24px 0;
+    }
+}
 aside{
     @media screen and (max-width:860px){
         #static-map,#recommand-wrapper{
@@ -191,7 +191,7 @@ aside{
             border-bottom: 1px solid gray;
         }
         form{
-            margin-top:16px;
+            margin-top:24px;
             .input-group{
                 width:100%;
                 padding: 8x 0 0 0;

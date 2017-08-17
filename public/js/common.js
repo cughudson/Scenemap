@@ -18,21 +18,28 @@ $(document).ready(
             const MAXHEIGHT = 1024;
 
             var quill = new Quill(id, config);
-            var dragToolbar = $(id).next(".dragtoolbar");
+            var dragToolbar = $(id).next();
             var startMouseMove = true;
             var startPosAtY = 0;
+            var editorH ;
             dragToolbar.on("mousedown", function(evt){
                 startMouseMove = true;
                 startPosAtY = evt.pageY;
+                editorH = $(id).height();
             });
             $(document).on("mousemove", function(evt){
+                let currentPosAtY;
+                let currentEditorH;
                 if(startMouseMove){
-                    
+                    currentPosAtY = evt.pageY;
+                    currentEditorH = ((currentPosAtY-startPosAtY) + editorH) > MAXHEIGHT?MAXHEIGHT:((currentPosAtY-startPosAtY) + editorH) < MINHEIGHT?MINHEIGHT:((currentPosAtY-startPosAtY) + editorH);
+                    $(id).css("height", currentEditorH);
                 }
             });
             $(document).on("mouseup", function(evt){
                 startMouseMove = false;
             });
+            return quill;
         };
         
         Component.PickerMap = function(id, center, level){
@@ -47,8 +54,10 @@ $(document).ready(
                 console.log("请输入正确的位置数据格式");
                 return;
             }
-            mapCenter = new BMap.Point(center[0], center[1]);
             map.enableZoom = true;
+            mapCenter = new BMap.Point(center[0], center[1]);
+            map.enableScrollWheelZoom();
+            map.disableDoubleClickZoom()
             map.centerAndZoom(new BMap.Point(center[0], center[1]), level);
 
             map.addMarker = function(pt){
@@ -64,9 +73,9 @@ $(document).ready(
                 return marker;
             };
             map.picker = function(){
-                return currentPickPos.pop();
+                return currentPickPos[0];
             };
-            map.addEventListener("rightclick", function(evt){
+            map.addEventListener("dblclick", function(evt){
                 var pixel =  new BMap.Pixel(evt.offsetX, evt.offsetY);
                 var point = map.pixelToPoint(pixel);
                 if(currentPickPos.length == 1){
@@ -74,6 +83,7 @@ $(document).ready(
                 }
                 currentPickPos.push(point);
                 map.addMarker(point);
+                $(".data",$("#"+id).next()).html("lng: " + map.picker().lng + ",  lat: " + map.picker().lat);
             });
             return map;
         };

@@ -97,11 +97,10 @@ footer{
     width:100%;
     position: relative;
 }
-button,.btn,input[type="file"],input[type='button']{
+button,.btn,input[type='button']{
     border: 1px solid lighten(@lightBlack,50%);
     border-radius: 3px;
     padding: 8px 24px;
-    background: @white;
     font-size: .8rem;
     margin:12px 0;
     letter-spacing: 1px;
@@ -121,6 +120,17 @@ button,.btn,input[type="file"],input[type='button']{
     &:hover{
 
     }
+}
+input[type="file"]{
+    opacity: 0;
+    height:100%;
+    width:100%;
+    border-radius: 3px;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    background:@skyBlue;
+    color:@white;
+    display: inline-block;
 }
 input[type='text'], textarea,input[type='password'], textarea{
     border: 1px solid lighten(@lightBlack,40%);
@@ -392,7 +402,6 @@ a.btn{
     display: inline-block;
     position: relative;
     input[type="file"]{
-        opacity: 0;
         width:80px;
         display: inline-block;
         left:-80px;
@@ -478,6 +487,16 @@ a.btn{
         margin:12px 0;
         border:1px solid lighten(@lightBlack,40);
     }
+    #pickerPoint{
+        padding: 6px;
+       .data{
+            font-size: .8rem;
+            font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+            color:red;
+            padding: 6px;
+            border-radius: 3px;
+        }
+    }
     .toolbar{
         position:relative;
         margin:24px 0;
@@ -510,21 +529,38 @@ a.btn{
 //
 .rich-editor-wrapper{
     padding: 24px 0;
+    width:100%;
+    min-width: 480px;
+    max-width: 680px;
     .ql-toolbar{
         width:100%;
-        min-width: 480px;
-        max-width: 680px;
-    }
+    }   
     #rich-editor{
         position:relative;
         left:0;
         width:100%;
-        min-width: 480px;
-        max-width: 680px;
         height:480px;
     }
     .drag-bar{
         height:32px;
         width:100%;
+        cursor: move;
+        border-top:none; 
+        box-sizing: border-box;
+        border-left:1px solid @editorBorder;
+        border-bottom: 1px solid @editorBorder;
+        border-right: 1px solid @editorBorder;
+        span{
+            display: block;
+            text-align: center;
+            li{
+                color: @editorBorder;
+            }
+            &:hover{
+                li{
+                     color: darken(@editorBorder,20%);
+                }
+            }
+         }
     }
 }
