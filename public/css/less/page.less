@@ -49,14 +49,28 @@
     .content-wrapper{
         height:100%;
         position:relative;
-        .picture{
+        @media screen and (min-width:768px){
+            width:80%;
+            max-width:1024px;
+            min-width:768px;
+            margin:auto;
+            position:relative;
+        }
+        @media screen and (max-width:768px){
             width:100%;
-            padding-bottom: 40%;
-            min-height: 360px;
-            background-image: url(../resource/picture/scene2.jpg);
-            background-origin: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
+            padding: 0 32px;
+            box-sizing: border-box;
+        }
+        .picture{
+            @media screen and (min-width:768px){
+                width:50%;
+                float:left;
+                position:relative;
+            }
+            @media screen and (max-width:768px){
+                width:100%;
+
+            }
             .info{
                 position: absolute;
                 z-index: 100000;
@@ -220,6 +234,7 @@ aside{
                     width:640px;
                     resize:none;
                     height:96px;
+                    box-sizing: border-box;
                 }
             } 
         }

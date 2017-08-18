@@ -251,30 +251,25 @@ a.btn {
   padding: 8px;
 }
 .managment .menu {
-  background: #fff;
+  background: #fafafa;
   border-right: 1px solid #c2c2c2;
 }
 .managment .menu div {
   width: 100%;
   line-height: 42px;
   text-align: center;
-}
-.managment .menu div:hover,
-.managment .menu div.click {
-  background: #ffffff;
-}
-.managment .menu div:active {
-  background: #f4f4f4;
+  position: relative;
 }
 .managment .menu div span {
   display: block;
   color: #424242;
+  box-sizing: border-box;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 .managment .menu div span:hover {
-  background: #e8e8e8;
-}
-.managment .menu div span:active {
-  background: #cfcfcf;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
 }
 .status-bar {
   width: 100%;
@@ -449,8 +444,10 @@ a.btn {
   border: 1.5px solid #4d90fe;
   color: #4d90fe;
 }
-#overlay {
-  background: rgba(0, 0, 0, 0.8);
+#overlay,
+.overlay {
+  opacity: 0;
+  background: black;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -458,12 +455,12 @@ a.btn {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 101;
+  z-index: 100;
 }
 #geo-picker-pannel {
   background: #fff;
   position: fixed;
-  right: 0;
+  right: -100%;
   height: 100%;
   top: 0;
   max-width: 480px;
@@ -514,21 +511,8 @@ a.btn {
 #geo-picker-pannel .toolbar .btn {
   float: right;
 }
-.close-right {
-  right: -100% !important;
-  transition: right 0.5s ease-in-out;
-  will-change: right;
-}
-.close-left {
-  left: -100% !important;
-  transition: left 0.5s ease-in-out;
-  will-change: left;
-}
-.none {
-  display: none;
-}
-.block {
-  display: block;
+.panel-close {
+  right: -100%;
 }
 .rich-editor-wrapper {
   padding: 24px 0;

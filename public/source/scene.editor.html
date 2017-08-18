@@ -18,6 +18,7 @@
         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=cUWciM1b3cacMFaSKRgTGT9W5yfh7RF7"></script>
         <script type="text/javascript" src="../plugin/quill/quill.js"></script>
         <script type="text/javascript" src="../js/lib/zepto.js"></script>
+        <script type="text/javascript" src="../js/lib/zepto.fx.js"></script>
         <script type="text/javascript" src="../js/common.js"></script>
     </head>
     <body>
@@ -72,8 +73,8 @@
                                 <div role="button" class="btn">打开地图</div>
                                 <div class="geo-data bubble">
                                     <span class="data">经纬度显示在这里</span>
+                                    <input type="hidden" name="geoData">
                                     <span class="close">X</span>
-                                    <input type="hidden" id="geoCorrdinate" value="" name="geoCorrdinate">
                                 </div>
                             </div>
                         </div>
@@ -106,8 +107,8 @@
                         <button for="editor" type="submit">提交</button>
                     </div>
                 </section>
-                <div id="overlay" class="hidden"></div>
-                <div id="geo-picker-pannel">
+                <div id="overlay" class="fullscreen hidden"></div>
+                <div id="geo-picker-pannel" class="panel">
                     <div class="close-wrapper clearfix">
                         <span class="close clickable"><li class="fa fa-close fa-2x"></li></span>
                     </div>
@@ -117,8 +118,8 @@
                     </div>
                     <div class="info notice"><li class="fa fa-info"></li><span>双击地图标定所需要选取的坐标点，确认，保存拾取数据，取消，放弃拾取</span></div>
                     <div class="toolbar clearfix">
-                        <div class="btn draggable" id="ok">确认</div>
-                        <div class="btn draggable" id="cancel">取消</div>
+                        <div class="btn draggable cancel">取消</div>
+                        <div class="btn draggable ok">确认</div>
                     </div>
                 </div>
                 <div class="status-bar">
@@ -126,9 +127,26 @@
                 </div>
                 <script type="text/javascript">
                     $(document).ready(function(){
-                        Component.PickerMap("#map",[116.404, 39.915],11);
-                        Component.RightPanel("#geo-picker-pannel");
-                        Component.quillEditor("#rich-editor");
+                        var bubble = Component.BubbleText(".bubble");
+                        var map = Component.PickerMap("#map",[116.404, 39.915],11);
+                        window.rightPanel = Component.RightPanel("#geo-picker-pannel")
+                        rightPanel.Close(function(){
+                            console.log("close");
+                        });
+                        $(".geo-picker-btn .btn").click(
+                            function(){
+                                rightPanel.Open(function(){
+                                    console.log("open");
+                                });
+                            }
+                        )
+                        rightPanel.Cancel(function(){
+                            console.log("cancel");
+                        });
+                        rightPanel.OK(function(ele){
+                            bubble.text(map.value());
+                        });
+                        var editor = Component.quillEditor("#rich-editor");
                     })
                 </script>
             </div>

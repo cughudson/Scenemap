@@ -46,14 +46,33 @@
   height: 100%;
   position: relative;
 }
-.slide#hotel .content-wrapper .picture {
-  width: 100%;
-  padding-bottom: 40%;
-  min-height: 360px;
-  background-image: url(../resource/picture/scene2.jpg);
-  background-origin: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+@media screen and (min-width: 768px) {
+  .slide#hotel .content-wrapper {
+    width: 80%;
+    max-width: 1024px;
+    min-width: 768px;
+    margin: auto;
+    position: relative;
+  }
+}
+@media screen and (max-width: 768px) {
+  .slide#hotel .content-wrapper {
+    width: 100%;
+    padding: 0 32px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (min-width: 768px) {
+  .slide#hotel .content-wrapper .picture {
+    width: 50%;
+    float: left;
+    position: relative;
+  }
+}
+@media screen and (max-width: 768px) {
+  .slide#hotel .content-wrapper .picture {
+    width: 100%;
+  }
 }
 .slide#hotel .content-wrapper .picture .info {
   position: absolute;
@@ -245,6 +264,7 @@ aside #recommand-wrapper .recommand {
   width: 640px;
   resize: none;
   height: 96px;
+  box-sizing: border-box;
 }
 .upload-area {
   margin: 24px 0;

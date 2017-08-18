@@ -9,7 +9,8 @@
     const CULTUREICONURL = "";
     const HOTELICONURL = "";
 
-    const MARKERTEMPLATE = "";
+    const HOTELTEMPLATE = "";
+    const SCENETEMPLATE = "<div class='window'><div class='thumnail-wrapper'><img src={{href}}></div><h4>{{title}}</h4><p><span class'name'>地址：</span><span>{{address}}</span></p></div>"
 
     var item = function(id, info){
         this.id = id;
@@ -74,7 +75,7 @@
                     this.map.removeOverlay(arg[i]);
                 }
             }else{
-                this.map.addOverlay(arg);
+                this.map.removeOverlay(arg);
             }
         };
         this.findMarker = function(marker){

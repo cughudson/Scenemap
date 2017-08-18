@@ -75,6 +75,9 @@ $(document).ready(
             map.picker = function(){
                 return currentPickPos[0];
             };
+            map.value = function(){
+                return "lng: " + currentPickPos[0].lng + ",  lat: " + currentPickPos[0].lat;
+            };
             map.addEventListener("dblclick", function(evt){
                 var pixel =  new BMap.Pixel(evt.offsetX, evt.offsetY);
                 var point = map.pixelToPoint(pixel);
@@ -93,25 +96,47 @@ $(document).ready(
             var close = $(".close", ele);
             var cancel = $(".cancel",ele);
             var ok = $(".ok",ele);
+            var overlay = $("#overlay");
 
-            ele.Close = function(func){
-                close.on("click", function(ent,func){
-                    ele.addClass("close-right");
-                    func();
+            ele.Close = function(closeFunc){
+                close.on("click", function(evt){
+                    ele.animate({right:'-100%'},500,'ease-in-out',function(){ele.addClass("hidden")});
+                    overlay.animate({opacity:0},500,'ease-in-out',function(){overlay.addClass("hidden")});
+                    if($.isFunction(closeFunc)){
+                        closeFunc();
+                    }else{
+                        console.error("Fatal Error")
+                    }
                 })
             };
-            ele.OK = function(func){
-                ok.on('click', function(evt,func){
-                    ele.addClass("close-right");
-                    return func();
+            ele.OK = function(okFunc){
+                ok.on('click', function(evt){
+                    ele.animate({right:'-100%'},500,'ease-in-out',function(){ele.addClass("hidden")});
+                    overlay.animate({opacity:0},500,'ease-in-out',function(){overlay.addClass("hidden")});
+                    if($.isFunction(okFunc)){
+                        okFunc();
+                    }else{
+                        console.error("Fatal Error")
+                    }
                 })
             };
-            ele.Cancel = function(func){
-                cancel.on('click', function(evt, func){
-                    ele.addClass("close-right");
-                    func();
+            ele.Cancel = function(cancelFunc){
+                cancel.on('click', function(evt){
+                    ele.animate({right:'-100%'},500,'ease-in-out',function(){ele.addClass("hidden")});
+                    overlay.animate({opacity:0},500,'ease-in-out',function(){overlay.addClass("hidden")});
+                    if($.isFunction(cancelFunc)){
+                        cancelFunc();
+                    }else{
+                        console.error("Fatal Error")
+                    }
                 })
-            }
+            };
+            ele.Open = function(){
+                ele.removeClass("hidden");
+                ele.animate({right:'0'},500,'ease-in-out');
+                overlay.removeClass("hidden");
+                overlay.animate({opacity:0.5},500,'ease-in-out');
+            };
             return ele;
         };
         //TimeInput component
@@ -135,6 +160,25 @@ $(document).ready(
                 }
             });
             return obj;
+        };
+        Component.BubbleText = function(cls){
+            var bubble = $(cls);
+            bubble.text = function(){
+                if(arguments.length == 0){
+                    return $(".data",bubble).html();
+                }else{
+                    $(".data",bubble).html(arguments[0]);
+                    $("input",bubble).val(arguments[0]);
+                }
+            };
+            bubble.delete = function(){
+                $(".close",bubble).on("click", function(evt){
+                   $(".data",$(evt.target).parent(cls)).html("这里显示拾取的坐标");
+                   $("input",$(evt.target).parent(cls)).val("");
+                })
+            };
+            bubble.delete();
+            return bubble;
         };
         window.Component = Component;
     }
