@@ -34,8 +34,8 @@
         </header>
         <main class="managment">
             <div class="menu">
-                <div class="clickable" id="new-scene"><span>新建景点</span></div>
-                <div class="clickable" id="scene-managment"><span>景点管理</span></div>
+                <div class="clickable" id="new-scene" target="scene.editor.html"><span>新建景点</span></div>
+                <div class="clickable" id="scene-managment" target=""><span>景点管理</span></div>
                 <div class="clickable" id="new-hotel"><span>新建民宿</span></div>
                 <div class="clickable" id="hotel-managment"><span>民宿管理</span></div>
                 <div class="clickable" id="sys-managment"><span>系统管理</span></div>
@@ -70,9 +70,9 @@
                         <div class="input-group">
                             <h5>拾取经纬坐标</h5>
                             <div class="geo-picker-btn">
-                                <div role="button" class="btn">打开地图</div>
+                                <div role="button" class="btn" title="打开地图拾取坐标">拾取坐标</div>
                                 <div class="geo-data bubble">
-                                    <span class="data">经纬度显示在这里</span>
+                                    <span class="data">这里显示拾取的坐标</span>
                                     <input type="hidden" name="geoData">
                                     <span class="close">X</span>
                                 </div>
@@ -123,13 +123,15 @@
                     </div>
                 </div>
                 <div class="status-bar">
-                    现在时间是：；
                 </div>
                 <script type="text/javascript">
                     $(document).ready(function(){
-                        var bubble = Component.BubbleText(".bubble");
-                        var map = Component.PickerMap("#map",[116.404, 39.915],11);
-                        window.rightPanel = Component.RightPanel("#geo-picker-pannel")
+                        var bubble = new Component.BubbleText(".bubble");
+                        debugger;
+                        var map = new Component.PickerMap("#map",[116.404, 39.915],11);
+                        map.enableMousemove();
+                        map.enableDbClick();
+                        window.rightPanel = new Component.RightPanel("#geo-picker-pannel")
                         rightPanel.Close(function(){
                             console.log("close");
                         });
@@ -146,7 +148,7 @@
                         rightPanel.OK(function(ele){
                             bubble.text(map.value());
                         });
-                        var editor = Component.quillEditor("#rich-editor");
+                        var editor = new Component.quillEditor("#rich-editor");
                     })
                 </script>
             </div>

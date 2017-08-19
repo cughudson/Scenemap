@@ -3,14 +3,21 @@ $(document).ready(
     function(){
         'use strict'
         //editor component
+        //require Zepto.js
+        // require BMap
         var Component = {};
         Component.quillEditor = function(id,config){
             
+           // var Font = Quill.import("formats/font")
             var defaultConfig = {
                 modules: {
-                    toolbar:true,
+                    toolbar:[
+                        ['bold','italic'],
+                        ['link','blockquote','code-block','image'],
+                        [{list:'ordered'},{list:'bullet'}]
+                    ]
                 },
-                placeholder: '填写要发布的内容',
+                placeholder: '填写要发布的内容,采用图文排版的形式',
                 theme: 'snow'  // or 'bubble'
             };
             var config = config||defaultConfig;
@@ -27,6 +34,7 @@ $(document).ready(
                 startPosAtY = evt.pageY;
                 editorH = $(id).height();
             });
+            
             $(document).on("mousemove", function(evt){
                 let currentPosAtY;
                 let currentEditorH;
@@ -39,13 +47,22 @@ $(document).ready(
             $(document).on("mouseup", function(evt){
                 startMouseMove = false;
             });
+            this.enable = function(){
+                this.enable();
+            };
+            this.Content = function(){
+                if(arguments.length == 0){
+                    return this.getContents();
+                }else{
+                    return this.setContents(arguments[0]);
+                }
+            }
             return quill;
         };
         
         Component.PickerMap = function(id, center, level){
 
             var id = id.replace("#","");
-            var map = new BMap.Map(id);
             var mapCenter;
             var currentPickPos = [];
             var currentMarker = [];
@@ -54,41 +71,52 @@ $(document).ready(
                 console.log("请输入正确的位置数据格式");
                 return;
             }
-            map.enableZoom = true;
-            mapCenter = new BMap.Point(center[0], center[1]);
-            map.enableScrollWheelZoom();
-            map.disableDoubleClickZoom()
-            map.centerAndZoom(new BMap.Point(center[0], center[1]), level);
+            this.map = new BMap.Map(id);
+            this.map.enableZoom = true;
+            this.mapCenter = new BMap.Point(center[0], center[1]);
+            this.map.enableScrollWheelZoom();
+            this.map.disableDoubleClickZoom()
+            this.map.centerAndZoom(new BMap.Point(center[0], center[1]), level);
 
-            map.addMarker = function(pt){
+            this.addMarker = function(pt){
                 if(currentMarker.length == 1){
-                    map.removeOverlay(currentMarker.pop());
+                    this.map.removeOverlay(currentMarker.pop());
                     currentMarker.pop();
                 }
-                currentMarker.push(map.createMarker(pt));
-                map.addOverlay(currentMarker[0]);
+                currentMarker.push(this.createMarker(pt));
+                this.map.addOverlay(currentMarker[0]);
             };
-            map.createMarker = function(pt){
+            this.createMarker = function(pt){
                 let marker = new BMap.Marker(pt);
                 return marker;
             };
-            map.picker = function(){
+            this.picker = function(){
                 return currentPickPos[0];
             };
-            map.value = function(){
+            this.value = function(){
                 return "lng: " + currentPickPos[0].lng + ",  lat: " + currentPickPos[0].lat;
             };
-            map.addEventListener("dblclick", function(evt){
-                var pixel =  new BMap.Pixel(evt.offsetX, evt.offsetY);
-                var point = map.pixelToPoint(pixel);
-                if(currentPickPos.length == 1){
-                    currentPickPos.pop();
-                }
-                currentPickPos.push(point);
-                map.addMarker(point);
-                $(".data",$("#"+id).next()).html("lng: " + map.picker().lng + ",  lat: " + map.picker().lat);
-            });
-            return map;
+            this.enableDbClick = function(){
+                var that = this;
+                this.map.addEventListener("dblclick", function(evt){
+                    var pixel =  new BMap.Pixel(evt.offsetX, evt.offsetY);
+                    var point = that.map.pixelToPoint(pixel);
+                    if(currentPickPos.length == 1){
+                        currentPickPos.pop();
+                    }
+                    currentPickPos.push(point);
+                    that.addMarker(point);
+                });
+            };
+            this.enableMousemove = function(){
+                var that = this;
+                this.map.addEventListener("mousemove", function(evt){
+                    var pixel =  new BMap.Pixel(evt.offsetX, evt.offsetY);
+                    var point = that.map.pixelToPoint(pixel);
+                    $(".data",$("#"+id).next()).html("lng: " + point.lng + ",  lat: " + point.lat);
+                });
+            }
+            return this;
         };
         //right panel;
         Component.RightPanel = function(id){
@@ -180,6 +208,26 @@ $(document).ready(
             bubble.delete();
             return bubble;
         };
+        Component.StaticMap = function(id, center, level){
+            var id = id.replace("#","");
+            var mapCenter;
+
+            if(!$.isArray(center)){
+                console.log("请输入正确的位置数据格式");
+                return;
+            }
+            this.map = new BMap.Map(id);
+            this.map.enableZoom = true;
+            this.mapCenter = new BMap.Point(center[0], center[1]);
+            this.map.centerAndZoom(new BMap.Point(center[0], center[1]), level);
+            this.moveTo = function(pt){
+                this.map.panTo(new BMap.Point(pt[0], pt[1]),2000);
+            };
+            this.zoomToPoint = function(pt){
+                if(this.getZoom() == 12) return;
+                this.map.centerAndZoom(new BMap.Point(pt[0],pt[1]),12);
+            }
+        }
         window.Component = Component;
     }
 )

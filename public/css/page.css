@@ -1,39 +1,33 @@
-.slide#scene .content-wrapper {
-  height: 100%;
-  position: relative;
-}
 @media screen and (min-width: 960px) {
-  .slide#scene .content-wrapper .picture .landscape,
-  .slide#scene .content-wrapper .picture #map-cantainer {
+  .slide#scene .scene .landscape,
+  .slide#scene .scene #index-map {
     width: 50%;
-    max-height: 800px;
     padding-bottom: 40%;
+    float: left;
   }
 }
 @media screen and (max-width: 960px) {
-  .slide#scene .content-wrapper .picture .landscape,
-  .slide#scene .content-wrapper .picture #map-cantainer {
+  .slide#scene .scene .landscape,
+  .slide#scene .scene #index-map {
     width: 100%;
     padding-bottom: 50%;
-    min-height: 360px;
+    float: left;
   }
 }
-.slide#scene .content-wrapper .picture .landscape {
+.slide#scene .scene .landscape {
   float: left;
   background-image: url(../resource/picture/scene1.jpg);
   background-origin: center center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.slide#scene .content-wrapper .picture .landscape .info {
+.slide#scene .scene .landscape .info {
   position: absolute;
   z-index: 100000;
   top: 64px;
   color: #fff;
 }
-.slide#scene .content-wrapper .picture #map-cantainer {
-  height: 100%;
-  float: left;
+.slide#scene .scene #index-map {
   background: gray;
 }
 .slide#scene .banner {
@@ -42,36 +36,49 @@
   height: 64px;
   background: lightblue;
 }
+.slide#hotel h1 {
+  text-align: center;
+}
 .slide#hotel .content-wrapper {
   height: 100%;
   position: relative;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 960px) {
   .slide#hotel .content-wrapper {
     width: 80%;
-    max-width: 1024px;
+    max-width: 1260px;
     min-width: 768px;
     margin: auto;
     position: relative;
+    padding: 32px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
   .slide#hotel .content-wrapper {
     width: 100%;
-    padding: 0 32px;
+    padding: 32px;
     box-sizing: border-box;
   }
 }
-@media screen and (min-width: 768px) {
+.slide#hotel .content-wrapper .picture {
+  background: yellow;
+  border: 1px dotted red;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 960px) {
   .slide#hotel .content-wrapper .picture {
     width: 50%;
+    padding-bottom: 25%;
     float: left;
     position: relative;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
   .slide#hotel .content-wrapper .picture {
     width: 100%;
+    padding-bottom: 50%;
+    float: left;
+    position: relative;
   }
 }
 .slide#hotel .content-wrapper .picture .info {

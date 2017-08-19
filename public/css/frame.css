@@ -128,9 +128,11 @@ h2,
 h3,
 h4,
 h5,
-h6,
-h7 {
+h6 {
   margin: 12px 0;
+}
+h1 {
+  padding: 32px 0;
 }
 .hidden {
   display: none;

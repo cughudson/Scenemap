@@ -2,40 +2,34 @@
 //index page
 //the picture must be the same size
 .slide#scene{
-    .content-wrapper{
-        height:100%;
-        position:relative;
-        .picture{
-            .landscape,#map-cantainer{
-                @media screen and (min-width:960px){
-                    width:50%;
-                    max-height: 800px;
-                    padding-bottom: 40%;
-                 }
-                @media screen and (max-width:960px){
-                    width:100%;
-                    padding-bottom: 50%;
-                    min-height: 360px;
-                }
-            }
-            .landscape{
+    .scene{
+        .landscape,#index-map{
+            @media screen and (min-width:960px){
+                width:50%;
+                padding-bottom: 40%;
                 float:left;
-                background-image: url(../resource/picture/scene1.jpg);
-                background-origin: center center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                .info{
-                    position: absolute;
-                    z-index: 100000;
-                    top:64px;
-                    color:@white;
                 }
-            }
-            #map-cantainer{
-                height:100%;
+            @media screen and (max-width:960px){
+                width:100%;
+                padding-bottom: 50%;
                 float:left;
-                background: gray;
             }
+        }
+        .landscape{
+            float:left;
+            background-image: url(../resource/picture/scene1.jpg);
+            background-origin: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            .info{
+                position: absolute;
+                z-index: 100000;
+                top:64px;
+                color:@white;
+            }
+        }
+        #index-map{
+            background: gray;
         }
     }
     .banner{
@@ -46,29 +40,40 @@
     }
 }
 .slide#hotel{
+    h1{
+        text-align: center;
+    }
     .content-wrapper{
         height:100%;
         position:relative;
-        @media screen and (min-width:768px){
+        @media screen and (min-width:960px){
             width:80%;
-            max-width:1024px;
+            max-width:1260px;
             min-width:768px;
             margin:auto;
             position:relative;
+            padding: 32px;
         }
-        @media screen and (max-width:768px){
+        @media screen and (max-width:960px){
             width:100%;
-            padding: 0 32px;
+            padding: 32px;
             box-sizing: border-box;
         }
         .picture{
-            @media screen and (min-width:768px){
+            background: yellow;
+            border:1px dotted red;
+            box-sizing: border-box;
+            @media screen and (min-width:960px){
                 width:50%;
+                padding-bottom: 25%;
                 float:left;
                 position:relative;
             }
-            @media screen and (max-width:768px){
+            @media screen and (max-width:960px){
                 width:100%;
+                padding-bottom: 50%;
+                float:left;
+                position:relative;
 
             }
             .info{
