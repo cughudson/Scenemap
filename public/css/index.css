@@ -1,1 +1,295 @@
-body{padding:0;margin:0;background:#f4f4f4}.site-wrapper{height:auto;width:100%;max-width:1400px;margin:auto;box-shadow:0 0 2px 0 #dbdbdb}.site-wrapper header{width:100%;max-width:1400px;height:64px;position:fixed;background:transparent;z-index:100}.site-wrapper header .logo{position:absolute;height:100%;width:auto}@media screen and (min-width:640px){.site-wrapper header .logo{left:32px}}@media screen and (max-width:640px){.site-wrapper header .logo{left:16px}}.site-wrapper header .logo a{display:block;box-sizing:border-box;height:100%;width:100%;padding:8px 0}.site-wrapper header .logo a img{height:inherit;width:auto}.site-wrapper header .tabs{height:64px;cursor:pointer;position:absolute}@media screen and (min-width:640px){.site-wrapper header .tabs{right:32px}}@media screen and (max-width:640px){.site-wrapper header .tabs{right:16px}}.site-wrapper header .tabs .tab{display:block;float:left;height:100%;padding:0 32px;font-size:1rem;box-sizing:border-box;position:relative}.site-wrapper header .tabs .tab:hover .underline{width:100%;transform:scaleX(1);will-change:transform;transition:transform .3s ease-in-out}.site-wrapper header .tabs .tab:not(:hover) .underline{width:100%;transform:scaleX(0);will-change:transform;transition:transform .3s ease-in-out}.site-wrapper header .tabs .tab span{height:64px;display:table-cell;vertical-align:middle;cursor:pointer}.site-wrapper header .tabs .tab .underline{background:#fff;height:3px;width:100%;transform:scaleX(0);position:absolute;left:0;bottom:0}.site-wrapper header.stick{box-shadow:0 0 11px 0 #a8a8a8;background:rgba(255,255,255,0.95)}.site-wrapper header.stick .tab .underline{background:#fff}.slide#scene{background:#fff}@media screen and (min-width:960px){.slide#scene .scene .landscape,.slide#scene .scene #index-map{width:50%;padding-bottom:40%;float:left}}@media screen and (max-width:960px){.slide#scene .scene .landscape,.slide#scene .scene #index-map{width:100%;padding-bottom:50%;float:left}}.slide#scene .scene .landscape{float:left;background-image:url(../resource/picture/scene1.jpg);background-origin:center center;background-repeat:no-repeat;background-size:cover}.slide#scene .scene .landscape .info{position:absolute;z-index:100000;top:64px;color:#fff}.slide#scene .scene #index-map{background:gray}.slide#scene .banner{position:relative;width:100%;height:64px;background:lightblue}.slide#hotel{background:#fff}.slide#hotel h1{text-align:center}.slide#hotel .content-wrapper{height:100%;position:relative}@media screen and (min-width:960px){.slide#hotel .content-wrapper{width:80%;max-width:1260px;min-width:768px;margin:auto;position:relative;padding:32px}}@media screen and (max-width:960px){.slide#hotel .content-wrapper{width:100%;padding:32px;box-sizing:border-box}}.slide#hotel .content-wrapper .picture{background:yellow;border:1px dotted red;box-sizing:border-box}@media screen and (min-width:960px){.slide#hotel .content-wrapper .picture{width:50%;padding-bottom:25%;float:left;position:relative}}@media screen and (max-width:960px){.slide#hotel .content-wrapper .picture{width:100%;padding-bottom:50%;float:left;position:relative}}.slide#hotel .content-wrapper .picture .info{position:absolute;z-index:100000;top:64px;color:#fff}.slide#hotel .content-wrapper .info{position:absolute;z-index:100000;top:64px;color:#fff}.slide#hotel .banner{position:relative;width:100%;height:64px;background:palevioletred}/*# sourceMappingURL=./index.css.map */
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+body {
+  padding: 0;
+  margin: 0;
+  background: #f4f4f4;
+  font-size: 16px;
+}
+.site-wrapper {
+  height: auto;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  box-shadow: 0px 0px 2px 0px #dbdbdb;
+}
+.site-wrapper header {
+  width: 100%;
+  max-width: 1400px;
+  position: fixed;
+  background: transparent;
+  z-index: 100;
+}
+@media screen and (min-width: 960px) {
+  .site-wrapper header {
+    height: 81px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .site-wrapper header {
+    height: 48px;
+  }
+}
+.site-wrapper header .logo {
+  position: absolute;
+  height: 100%;
+  width: auto;
+}
+@media screen and (min-width: 960px) {
+  .site-wrapper header .logo {
+    left: 40.5px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .site-wrapper header .logo {
+    left: 240px;
+  }
+}
+.site-wrapper header .logo a {
+  display: block;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding: 8px 0;
+}
+.site-wrapper header .logo a img {
+  height: inherit;
+  width: auto;
+}
+.site-wrapper header nav {
+  height: 81px;
+  cursor: pointer;
+  position: absolute;
+}
+@media screen and (min-width: 640px) {
+  .site-wrapper header nav {
+    right: 40.5px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .site-wrapper header nav {
+    right: 24px;
+  }
+}
+.site-wrapper header nav .tab {
+  display: block;
+  float: left;
+  height: 100%;
+  padding: 0 32px;
+  box-sizing: border-box;
+  position: relative;
+  font-size: 1.6rem;
+}
+.site-wrapper header nav .tab span {
+  height: 81px;
+  display: table-cell;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.site-wrapper header.stick {
+  box-shadow: 0px 0 11px 0px #a8a8a8;
+  background: rgba(255, 255, 255, 0.95);
+  transition: background 0.5s ease-in-out;
+}
+.site-wrapper header.stick .tab:hover {
+  background: #424242;
+  color: #fff;
+  transition: background 0.3s ease-in-out;
+}
+.site-wrapper header.stick .tab:not(:hover) {
+  background: transparent;
+  color: #424242;
+  transition: background 0.3s ease-in-out;
+}
+.site-wrapper header:not(.stick) {
+  box-shadow: none;
+  background: transparent;
+  transition: background 0.5s ease-in-out;
+  color: #fff;
+}
+.site-wrapper header:not(.stick) .tab:hover {
+  background: #fff;
+  color: #424242;
+  transition: background 0.3s ease-in-out;
+}
+.site-wrapper header:not(.stick) .tab:not(:hover) {
+  background: transparent;
+  transition: background 0.3s ease-in-out;
+}
+#preface {
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+#preface .image {
+  width: 100%;
+  padding-bottom: 38.2%;
+  height: 0;
+  overflow: hidden;
+}
+#preface .image img {
+  width: 100%;
+  height: auto;
+}
+#preface .image img:hover {
+  filter: grayscale(45%);
+}
+#preface .info-wrapper {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+#preface .info-wrapper .info {
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+#preface .info-wrapper .info h1 {
+  color: #fff;
+  font-size: 6rem;
+  font-weight: 100;
+}
+#preface .info-wrapper .info a {
+  font-size: 1.5rem;
+  display: inline-block;
+  padding: 8px 32px;
+  border: 2px solid #fff;
+  text-decoration: none;
+  color: #fff;
+  margin: 12px 24px;
+}
+#preface .info-wrapper .info a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #424242;
+}
+section#hotel,
+section#scene {
+  width: 100%;
+  background: #fff;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 768px) {
+  section#hotel,
+  section#scene {
+    padding: 32px;
+  }
+}
+@media screen and (max-width: 768px) {
+  section#hotel,
+  section#scene {
+    padding: 24px;
+  }
+}
+section#scene .landscape-wrapper {
+  position: relative;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  section#scene .landscape-wrapper .landscape,
+  section#scene .landscape-wrapper #index-map {
+    width: 50%;
+    padding-bottom: 30.9%;
+    float: left;
+  }
+}
+@media screen and (max-width: 768px) {
+  section#scene .landscape-wrapper .landscape,
+  section#scene .landscape-wrapper #index-map {
+    width: 100%;
+    padding-bottom: 61.8%;
+    float: left;
+  }
+}
+section#scene .landscape-wrapper .landscape {
+  float: left;
+  background-image: url(../resource/picture/scene1.jpg);
+  background-origin: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+section#scene .landscape-wrapper .landscape .info {
+  position: absolute;
+  z-index: 100000;
+  top: 64px;
+  color: #fff;
+}
+section#scene .landscape-wrapper #index-map {
+  background: gray;
+}
+section#scene .banner {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  background: lightblue;
+}
+.slide#hotel h1 {
+  text-align: center;
+}
+.slide#hotel .content-wrapper {
+  height: 100%;
+  position: relative;
+}
+@media screen and (min-width: 960px) {
+  .slide#hotel .content-wrapper {
+    width: 80%;
+    max-width: 1260px;
+    min-width: 768px;
+    margin: auto;
+    position: relative;
+    padding: 32px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .slide#hotel .content-wrapper {
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+}
+.slide#hotel .content-wrapper .picture {
+  background: yellow;
+  border: 1px dotted red;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 960px) {
+  .slide#hotel .content-wrapper .picture {
+    width: 50%;
+    padding-bottom: 25%;
+    float: left;
+    position: relative;
+  }
+}
+@media screen and (max-width: 960px) {
+  .slide#hotel .content-wrapper .picture {
+    width: 100%;
+    padding-bottom: 50%;
+    float: left;
+    position: relative;
+  }
+}
+.slide#hotel .content-wrapper .picture .info {
+  position: absolute;
+  z-index: 100000;
+  top: 64px;
+  color: #fff;
+}
+.slide#hotel .content-wrapper .info {
+  position: absolute;
+  z-index: 100000;
+  top: 64px;
+  color: #fff;
+}
+.slide#hotel .banner {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  background: palevioletred;
+}

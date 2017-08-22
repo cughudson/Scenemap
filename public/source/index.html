@@ -24,24 +24,29 @@
                         <img src="../resource/picture/scene1.jpg" alt/>
                     </a>
                 </div>
-                <div class="tabs">
+                <nav>
                     <a class="tab" src="" target="blank"><span>景点</span></a>
-                    <a class="tab" src="" target="blank"><span>农家乐</span></a>
+                    <a class="tab" src="" target="blank"><span>民宿</span></a>
                     <a class="tab" src="" target="blank"><span>关于</span></a>
-                </div>
+                </nav>
             </header>
-            <div class="preface">
-                <div class="">
-                    <h1>身上无棉，莫上中原</h1>
-                    <div>
-                        <a class="btn" href="">查看农家乐</a>
-                        <a class="btn" href="">查看景点</a>
+            <div id="preface">
+                <div class="image">
+                    <img src="../resource/image/bg.jpg" alt="">
+                </div>
+                <div class="info-wrapper">
+                    <div class="info">
+                        <h1>身上无棉，莫上中原</h1>
+                        <div>
+                            <a class="btn" href="">查看民宿</a>
+                            <a class="btn" href="">查看景点</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <main id="index">
                 <section id="scene" class="slide">
-                    <div class="scene clearfix ">
+                    <div class="landscape-wrapper clearfix ">
                         <div class="landscape">
                             <a target="blank" src="">
                                 <div class="info">
@@ -58,7 +63,6 @@
                     <div class="banner"></div>
                 </section>
                 <section id="hotel" class="slide">
-                    <h1>身上无棉花，莫上中源</h1>
                     <div class="content-wrapper clearfix">
                         <div class="picture">
                             <a target="blank" hrf="">
@@ -110,6 +114,7 @@
                     function(){
                         var map = new Component.StaticMap("#index-map",[116.404, 39.915],11);
                         window.map = map;
+                        var header = Component.StickElement("header","stick");
                     }
                 )
             </script>

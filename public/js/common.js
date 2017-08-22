@@ -226,7 +226,32 @@ $(document).ready(
             this.zoomToPoint = function(pt){
                 if(this.getZoom() == 12) return;
                 this.map.centerAndZoom(new BMap.Point(pt[0],pt[1]),12);
-            }
+            };
+            this.ViewFitTheBounds = function(){
+
+            };
+        };
+        Component.StickElement = function(selector, stickCls){
+            let ele = $(selector);
+            $(window).on("scroll", function(evt){
+                if(document.body.scrollTop != 0){
+                    ele.trigger("ele:stick");
+                }else{
+                    ele.trigger("ele:normal");
+                }
+            });
+            ele.on("ele:stick",function(){
+                if(!ele.hasClass(stickCls)){
+                    ele.addClass(stickCls);
+                    console.log("stick");
+                }
+            });
+            ele.on("ele:normal",function(){
+                if(ele.hasClass(stickCls)){
+                    ele.removeClass(stickCls);
+                }
+            });
+            return ele;
         }
         window.Component = Component;
     }

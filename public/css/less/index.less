@@ -1,9 +1,20 @@
 @import "param.less";
 //the picture must be the same size
+
+
+.clearfix{
+    &::after{
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
 body{
     padding: 0;
     margin:0;
     background:lighten(@lightBlack,70%);
+    font-size:16px;
 }
 .site-wrapper{
     height:auto;
@@ -14,17 +25,22 @@ body{
     header{
         width:100%;
         max-width:1400px;
-        height: @menuHeight;
         position: fixed;
         background: transparent;
         z-index: 100;
+        @media screen and (min-width:960px){
+            height: @menuHeight;
+        }
+         @media screen and (max-width:960px){
+              height: @menuHeight-small;
+        }
         .logo{
             position: absolute;
-            @media screen and (min-width:640px){
+            @media screen and (min-width:960px){
                 left:@menuHeight*0.5;
             }
-            @media screen and (max-width:640px){
-                left:@menuHeight*0.25;
+            @media screen and (max-width:960px){
+                left:@menuHeight-small*5;
             }
             height:100%;
             width:auto;
@@ -40,7 +56,7 @@ body{
                 }
             }
         }
-        .tabs{
+        nav{
             height:@menuHeight;
             cursor: pointer;
             position: absolute;
@@ -48,72 +64,136 @@ body{
                 right:@menuHeight*0.5;
             }
             @media screen and (max-width:640px){
-                right:@menuHeight*0.25;
+                right:@menuHeight-small*0.5;
             }
             .tab{
                 display: block;
                 float:left;
                 height:100%;
                 padding: 0 32px;
-                font-size: 1rem;
                 box-sizing: border-box;
                 position:relative;
-                &:hover{
-                    .underline{
-                        width:100%;
-                        transform:scaleX(1);
-                        will-change:transform;
-                        transition:transform .3s ease-in-out;
-                    }
-                }
-                &:not(:hover){
-                    .underline{
-                        width:100%;
-                        transform:scaleX(0);
-                        will-change:transform;
-                        transition:transform .3s ease-in-out;
-                    }
-                }
+                font-size:1.6rem;
                 span{
                     height:@menuHeight;
                     display: table-cell;
                     vertical-align: middle;
                     cursor: pointer;
                 }
-                .underline{
-                    background:@white;
-                    height: 3px;
-                    width:100%;
-                    transform: scaleX(0);
-                    position: absolute;
-                    left: 0px;
-                    bottom: 0
-                }
             }
         }
         &.stick{
             box-shadow: 0px 0 11px 0px lighten(@lightBlack,40%);
             background: fadeout(@white,5%);
+            transition:background .5s ease-in-out;
              .tab{
-                .underline{
-                    background:@white;
+                &:hover{
+                    background: @lightBlack;
+                    color:@white;
+                    transition:background .3s ease-in-out;
+                }
+                &:not(:hover){
+                    background: transparent;
+                    color:@lightBlack;
+                    transition:background .3s ease-in-out;
+                }
+            }
+        }
+        &:not(.stick){
+            box-shadow: none;
+            background: transparent;
+            transition:background .5s ease-in-out;
+            color:@white;
+             .tab{
+                &:hover{
+                    background: @white;
+                    color:@lightBlack;
+                    transition:background .3s ease-in-out;
+                }
+                &:not(:hover){
+                    background: transparent;
+                    transition:background .3s ease-in-out;
                 }
             }
         }
     }
 }
-.slide#scene{
-    background: @white;
-    .scene{
-        .landscape,#index-map{
-            @media screen and (min-width:960px){
-                width:50%;
-                padding-bottom: 40%;
-                float:left;
+
+#preface{
+    z-index: 10;
+    position:relative;
+    width:100%;
+    display: flex;
+    align-items: center;
+    .image{
+        width:100%;
+        padding-bottom: 38.2%;
+        height:0;
+        overflow: hidden;
+        img{
+            width:100%;
+            height:auto;
+            &:hover{
+                filter:grayscale(45%);
+            }
+        }
+    }
+    .info-wrapper{
+        top:0;
+        width:100%;
+        height:100%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        .info{
+            top:0;
+            width:100%;
+            text-align: center;
+            h1{
+                color:@white;
+                font-size: 6rem;
+                font-weight: 100;
+            }
+            a{
+                font-size: 1.5rem;
+                display: inline-block;
+                padding: 8px 32px;
+                border:2px solid @white;
+                text-decoration: none;
+                color:@white;
+                margin:12px 24px;
+                &:hover{
+                    background: fadeout(@white,70%);
+                    color:@lightBlack;
                 }
-            @media screen and (max-width:960px){
+            }
+        }
+    }
+}
+section#hotel,section#scene{
+    width:100%;
+    background: @white;
+    box-sizing: border-box;
+    @media screen and (min-width:768px){
+        padding:32px;
+    }
+    @media screen and (max-width:768px){
+        padding: 24px;
+    }
+}
+section#scene{
+    .landscape-wrapper{
+        position: relative;
+        width:100%;
+        .landscape,#index-map{
+            @media screen and (min-width:768px){
+                width:50%;
+                padding-bottom: 30.9%;
+                float:left;
+            }
+            @media screen and (max-width:768px){
                 width:100%;
-                padding-bottom: 50%;
+                padding-bottom: 61.8%;
                 float:left;
             }
         }
@@ -142,7 +222,6 @@ body{
     }
 }
 .slide#hotel{
-    background: @white;
     h1{
         text-align: center;
     }
@@ -159,7 +238,7 @@ body{
         }
         @media screen and (max-width:960px){
             width:100%;
-            padding: 32px;
+            padding: 16px;
             box-sizing: border-box;
         }
         .picture{
