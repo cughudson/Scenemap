@@ -1,7 +1,10 @@
 @import "param.less";
 //the picture must be the same size
 
-
+*{
+    padding: 0;
+    margin:0;
+}
 .clearfix{
     &::after{
         display: block;
@@ -14,33 +17,39 @@ body{
     padding: 0;
     margin:0;
     background:lighten(@lightBlack,70%);
-    font-size:16px;
+    @media screen and (min-width:768px){
+        font-size:16px;
+    }
+    @media screen and (max-width:768px){
+        font-size:12px;
+    }
 }
 .site-wrapper{
     height:auto;
     width:100%;
     max-width:1400px;
     margin:auto;
-    box-shadow: 0px 0px 2px 0px lighten(@lightBlack,60%);
+    box-shadow: 0px 0px 2px 0px lighten(@lightBlack,30%);
+    background: white;
     header{
         width:100%;
         max-width:1400px;
         position: fixed;
         background: transparent;
         z-index: 100;
-        @media screen and (min-width:960px){
+        @media screen and (min-width:768px){
             height: @menuHeight;
         }
-         @media screen and (max-width:960px){
+         @media screen and (max-width:768px){
               height: @menuHeight-small;
         }
         .logo{
             position: absolute;
-            @media screen and (min-width:960px){
+            @media screen and (min-width:768px){
                 left:@menuHeight*0.5;
             }
-            @media screen and (max-width:960px){
-                left:@menuHeight-small*5;
+            @media screen and (max-width:768px){
+                left:@menuHeight-small*0.5;
             }
             height:100%;
             width:auto;
@@ -49,7 +58,7 @@ body{
                 box-sizing: border-box;
                 height:100%;
                 width:100%;
-                padding: 8px 0;
+                padding: 12px 0;
                 img{
                     height:inherit;
                     width:auto;
@@ -57,25 +66,36 @@ body{
             }
         }
         nav{
-            height:@menuHeight;
             cursor: pointer;
             position: absolute;
-            @media screen and (min-width:640px){
+            @media screen and (min-width:768px){
                 right:@menuHeight*0.5;
+                height:@menuHeight;
+                .tab{
+                    padding: 0 32px;
+                    span{
+                        height:@menuHeight;
+                    }
+                }
             }
-            @media screen and (max-width:640px){
+            @media screen and (max-width:768px){
                 right:@menuHeight-small*0.5;
+                height:@menuHeight-small;
+                .tab{
+                    padding: 0 24px;
+                    span{
+                        height:@menuHeight-small;
+                    }
+                }
             }
             .tab{
                 display: block;
                 float:left;
                 height:100%;
-                padding: 0 32px;
                 box-sizing: border-box;
                 position:relative;
                 font-size:1.6rem;
                 span{
-                    height:@menuHeight;
                     display: table-cell;
                     vertical-align: middle;
                     cursor: pointer;
@@ -127,7 +147,7 @@ body{
     align-items: center;
     .image{
         width:100%;
-        padding-bottom: 38.2%;
+        padding-bottom: 49.4%;
         height:0;
         overflow: hidden;
         img{
@@ -151,7 +171,7 @@ body{
             text-align: center;
             h1{
                 color:@white;
-                font-size: 6rem;
+                font-size: 5rem;
                 font-weight: 100;
             }
             a{
@@ -161,7 +181,10 @@ body{
                 border:2px solid @white;
                 text-decoration: none;
                 color:@white;
-                margin:12px 24px;
+                margin:24px 12px;
+                li{
+                    padding: 0 4px;
+                }
                 &:hover{
                     background: fadeout(@white,70%);
                     color:@lightBlack;
@@ -170,12 +193,14 @@ body{
         }
     }
 }
+main#index{
+    padding-top:32px;
+}
 section#hotel,section#scene{
     width:100%;
-    background: @white;
     box-sizing: border-box;
     @media screen and (min-width:768px){
-        padding:32px;
+        padding:48px;
     }
     @media screen and (max-width:768px){
         padding: 24px;
@@ -194,7 +219,9 @@ section#scene{
             @media screen and (max-width:768px){
                 width:100%;
                 padding-bottom: 61.8%;
+                margin-top: 24px;
                 float:left;
+                box-shadow: 0 0 1px 0 @lightBlack;
             }
         }
         .landscape{
@@ -205,7 +232,7 @@ section#scene{
             background-size: cover;
             .info{
                 position: absolute;
-                z-index: 100000;
+                z-index: 1;
                 top:64px;
                 color:@white;
             }
@@ -222,60 +249,75 @@ section#scene{
     }
 }
 .slide#hotel{
-    h1{
-        text-align: center;
-    }
+
     .content-wrapper{
-        height:100%;
         position:relative;
-        @media screen and (min-width:960px){
-            width:80%;
-            max-width:1260px;
-            min-width:768px;
+        box-sizing: border-box;
+        @media screen and (min-width:768px){
+            width:100%;
             margin:auto;
             position:relative;
-            padding: 32px;
         }
-        @media screen and (max-width:960px){
+        @media screen and (max-width:768px){
             width:100%;
-            padding: 16px;
-            box-sizing: border-box;
         }
         .picture{
-            background: yellow;
-            border:1px dotted red;
             box-sizing: border-box;
-            @media screen and (min-width:960px){
+            @media screen and (min-width:768px){
                 width:50%;
                 padding-bottom: 25%;
                 float:left;
                 position:relative;
             }
-            @media screen and (max-width:960px){
+            @media screen and (max-width:768px){
                 width:100%;
+                margin-top:24px; 
+                box-shadow: 0 0 1px 0 @lightBlack;
                 padding-bottom: 50%;
                 float:left;
                 position:relative;
 
             }
+            a{
+                display: block;
+                width:100%;
+                height:100%;
+                overflow: hidden;
+                position:absolute;
+                img{
+                    width:100%;
+                    height:auto;
+                }
+            }
             .info{
                 position: absolute;
-                z-index: 100000;
-                top:64px;
+                z-index: 1;
                 color:@white;
+                padding: 16px 24px;
+                box-sizing: border-box;
+                width:100%;
+                bottom:0;
+                background: fadeout(Black,60%);
+                cursor: pointer;
+                width:100%;
+                text-align: left;
+                h1{
+                    font-weight: 200;
+                    letter-spacing: 2px;
+                    line-height: 250%;
+                }
+                @media screen and (max-width:768px){
+                    text-align: center;
+                }
             }
         }
-        .info{
-            position: absolute;
-            z-index: 100000;
-            top:64px;
-            color:@white;
-        }
     }
-    .banner{
-        position: relative;
-        width: 100%;
-        height:64px;
-        background: palevioletred;
-    }
+}
+footer{
+    margin-top:32px;
+    background: darkblue;
+    text-align: center;
+    color:white;
+    padding: 24px 0;
+    letter-spacing: 2px;
 }
