@@ -12,7 +12,6 @@
         clear: both;
     }
 }
-
 body{
     padding: 0;
     margin:0;
@@ -44,21 +43,44 @@ body{
               height: @menuHeight-small;
         }
         .logo{
-            position: absolute;
+            height:100%;
             @media screen and (min-width:768px){
-                left:@menuHeight*0.5;
+                position: absolute;
+                padding-left:@menuHeight*0.5;
+                width:auto;
+                .nav-header{
+                    display: none;
+                    & *{
+                        display: none;
+                    }
+                }
             }
             @media screen and (max-width:768px){
-                left:@menuHeight-small*0.5;
-            }
-            height:100%;
-            width:auto;
-            a{
-                display: block;
-                box-sizing: border-box;
-                height:100%;
                 width:100%;
+                position: relative;
+                .nav-header{
+                    display: block;
+                    float:right;
+                    padding-right:@menuHeight-small*0.5;
+                    li{
+                        height:100%;
+                        display: block;
+                        line-height: @menuHeight-small;
+                        cursor:pointer;
+                    }
+                }
+            }
+            a{
+                height:100%;
+                box-sizing: border-box;
+                display: inline-block;
                 padding: 12px 0;
+                @media screen and (max-width:768px){
+                    padding-left:@menuHeight*0.5;
+                }
+                @media screen and (max-width:768px){
+                    padding-left:@menuHeight-small*0.5;
+                }
                 img{
                     height:inherit;
                     width:auto;
@@ -68,6 +90,7 @@ body{
         nav{
             cursor: pointer;
             position: absolute;
+            text-transform: uppercase;
             @media screen and (min-width:768px){
                 right:@menuHeight*0.5;
                 height:@menuHeight;
@@ -79,14 +102,28 @@ body{
                 }
             }
             @media screen and (max-width:768px){
-                right:@menuHeight-small*0.5;
-                height:@menuHeight-small;
+                top:@menuHeight-small;
+                background: fadeout(@white,5%);
+                width:100%;
+                text-align: center;
+                display: none;
+                position:fixed;
+                height:0;
                 .tab{
-                    padding: 0 24px;
+                    width:100%;
+                    text-align: center;
+                    padding-left: 20%;
                     span{
                         height:@menuHeight-small;
+                        display: inline-block;
+                        width:100%;
                     }
                 }
+            }
+            &.hu-open{
+                display: block;
+                height:auto;
+                transition:height .5s ease-in-out;
             }
             .tab{
                 display: block;

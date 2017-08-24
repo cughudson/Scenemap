@@ -48,26 +48,53 @@ body {
   }
 }
 .site-wrapper header .logo {
-  position: absolute;
   height: 100%;
-  width: auto;
 }
 @media screen and (min-width: 768px) {
   .site-wrapper header .logo {
-    left: 40.5px;
+    position: absolute;
+    padding-left: 40.5px;
+    width: auto;
+  }
+  .site-wrapper header .logo .nav-header {
+    display: none;
+  }
+  .site-wrapper header .logo .nav-header * {
+    display: none;
   }
 }
 @media screen and (max-width: 768px) {
   .site-wrapper header .logo {
-    left: 32px;
+    width: 100%;
+    position: relative;
+  }
+  .site-wrapper header .logo .nav-header {
+    display: block;
+    float: right;
+    padding-right: 32px;
+  }
+  .site-wrapper header .logo .nav-header li {
+    height: 100%;
+    display: block;
+    line-height: 64px;
+    cursor: pointer;
   }
 }
 .site-wrapper header .logo a {
-  display: block;
-  box-sizing: border-box;
   height: 100%;
-  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
   padding: 12px 0;
+}
+@media screen and (max-width: 768px) {
+  .site-wrapper header .logo a {
+    padding-left: 40.5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .site-wrapper header .logo a {
+    padding-left: 32px;
+  }
 }
 .site-wrapper header .logo a img {
   height: inherit;
@@ -76,6 +103,7 @@ body {
 .site-wrapper header nav {
   cursor: pointer;
   position: absolute;
+  text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
   .site-wrapper header nav {
@@ -91,15 +119,29 @@ body {
 }
 @media screen and (max-width: 768px) {
   .site-wrapper header nav {
-    right: 32px;
-    height: 64px;
+    top: 64px;
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    text-align: center;
+    display: none;
+    position: fixed;
+    height: 0;
   }
   .site-wrapper header nav .tab {
-    padding: 0 24px;
+    width: 100%;
+    text-align: center;
+    padding-left: 20%;
   }
   .site-wrapper header nav .tab span {
     height: 64px;
+    display: inline-block;
+    width: 100%;
   }
+}
+.site-wrapper header nav.hu-open {
+  display: block;
+  height: auto;
+  transition: height 0.5s ease-in-out;
 }
 .site-wrapper header nav .tab {
   display: block;

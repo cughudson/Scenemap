@@ -252,7 +252,35 @@ $(document).ready(
                 }
             });
             return ele;
-        }
+        };
+        Component.SlideMenu = function(selector,triggerEleSelector){
+            let target = $(selector);
+            let btn = $(triggerEleSelector);
+            const hintClass = "hu-open";
+
+            btn.on("click",function(){
+                if(target.hasClass(hintClass)){
+                    target.removeClass(hintClass);
+                }else{
+                    target.addClass(hintClass);
+                }
+            });
+
+        };
+        Component.Slider = function(prevSelector,nextSelector,nextFunc,preFunc){
+
+            let prevEle = $(prevSelector);
+            let nextEle = $(nextSelector);
+
+            prevEle.on("click", function(){
+                //trigger when next btn is click;
+                nextFunc();
+            });
+            nextEle.on("click", function(){
+                //trigger when previous btn is click;
+                prevFunc();
+            });
+        };
         window.Component = Component;
     }
 )
