@@ -24,9 +24,9 @@
                     <a src="/">
                         <img src="../resource/picture/scene1.jpg" alt/>
                     </a>
-                    <div class="nav-header"><li class="fa fa-bars fa-3x"></li></div>
+                    <div class="nav-btn"><li class="fa fa-bars fa-3x"></li></div>
                 </div>
-                <nav>
+                <nav class="menu-close">
                     <a class="tab" src="" target="blank"><span>景点</span></a>
                     <a class="tab" src="" target="blank"><span>民宿</span></a>
                     <a class="tab" src="" target="blank"><span>关于</span></a>
@@ -117,7 +117,7 @@
                         var map = new Component.StaticMap("#index-map",[116.404, 39.915],11);
                         window.map = map;
                         var header = Component.StickElement("header","stick");
-                        var t = new Component.SlideMenu("nav",".nav-header");
+                        var t = new Component.SlideMenu("nav",".nav-btn");
                     }
                 )
             </script>

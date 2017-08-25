@@ -256,12 +256,15 @@ $(document).ready(
         Component.SlideMenu = function(selector,triggerEleSelector){
             let target = $(selector);
             let btn = $(triggerEleSelector);
-            const hintClass = "hu-open";
+            const hintClass = "menu-close";
+            const headerState = "open";
 
             btn.on("click",function(){
                 if(target.hasClass(hintClass)){
                     target.removeClass(hintClass);
+                    btn.addClass(headerState);
                 }else{
+                    btn.removeClass(headerState);
                     target.addClass(hintClass);
                 }
             });

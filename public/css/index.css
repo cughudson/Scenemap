@@ -56,10 +56,10 @@ body {
     padding-left: 40.5px;
     width: auto;
   }
-  .site-wrapper header .logo .nav-header {
+  .site-wrapper header .logo .nav-btn {
     display: none;
   }
-  .site-wrapper header .logo .nav-header * {
+  .site-wrapper header .logo .nav-btn * {
     display: none;
   }
 }
@@ -67,17 +67,22 @@ body {
   .site-wrapper header .logo {
     width: 100%;
     position: relative;
+    z-index: 10;
   }
-  .site-wrapper header .logo .nav-header {
+  .site-wrapper header .logo .nav-btn {
     display: block;
     float: right;
     padding-right: 32px;
+    color: #fff;
+    cursor: pointer;
   }
-  .site-wrapper header .logo .nav-header li {
+  .site-wrapper header .logo .nav-btn.open {
+    color: #424242;
+  }
+  .site-wrapper header .logo .nav-btn li {
     height: 100%;
     display: block;
     line-height: 64px;
-    cursor: pointer;
   }
 }
 .site-wrapper header .logo a {
@@ -119,29 +124,34 @@ body {
 }
 @media screen and (max-width: 768px) {
   .site-wrapper header nav {
-    top: 64px;
-    background: rgba(255, 255, 255, 0.95);
+    top: 0;
+    background: #fff;
     width: 100%;
     text-align: center;
-    display: none;
     position: fixed;
-    height: 0;
+    height: auto;
+    padding-top: 64px;
+    transition: height 0.5s ease-in-out;
+    padding-bottom: 16px;
   }
   .site-wrapper header nav .tab {
     width: 100%;
     text-align: center;
-    padding-left: 20%;
+    padding-left: 15%;
   }
   .site-wrapper header nav .tab span {
     height: 64px;
     display: inline-block;
     width: 100%;
   }
-}
-.site-wrapper header nav.hu-open {
-  display: block;
-  height: auto;
-  transition: height 0.5s ease-in-out;
+  .site-wrapper header nav.menu-close {
+    display: none;
+    height: auto;
+    height: 0;
+  }
+  .site-wrapper header nav.menu-close span {
+    color: #424242 !important;
+  }
 }
 .site-wrapper header nav .tab {
   display: block;
@@ -158,18 +168,38 @@ body {
 }
 .site-wrapper header.stick {
   box-shadow: 0px 0 11px 0px #a8a8a8;
-  background: rgba(255, 255, 255, 0.95);
+  background: #fff;
   transition: background 0.5s ease-in-out;
+}
+.site-wrapper header.stick .nav-btn li {
+  color: #424242;
 }
 .site-wrapper header.stick .tab:hover {
   background: #424242;
-  color: #fff;
   transition: background 0.3s ease-in-out;
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .site-wrapper header.stick .tab:hover {
+    color: #424242;
+    background: #f4f4f4;
+  }
+}
+@media screen and (max-width: 768px) {
+  .site-wrapper header.stick .tab:active {
+    color: #424242;
+    background: #f4f4f4;
+  }
 }
 .site-wrapper header.stick .tab:not(:hover) {
   background: transparent;
   color: #424242;
   transition: background 0.3s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+  .site-wrapper header.stick .tab:not(:hover) {
+    color: #424242;
+  }
 }
 .site-wrapper header:not(.stick) {
   box-shadow: none;
@@ -182,9 +212,20 @@ body {
   color: #424242;
   transition: background 0.3s ease-in-out;
 }
+@media screen and (max-width: 768px) {
+  .site-wrapper header:not(.stick) .tab:hover {
+    color: #424242;
+    background: #dbdbdb;
+  }
+}
 .site-wrapper header:not(.stick) .tab:not(:hover) {
   background: transparent;
   transition: background 0.3s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+  .site-wrapper header:not(.stick) .tab:not(:hover) {
+    color: #424242;
+  }
 }
 #preface {
   z-index: 10;

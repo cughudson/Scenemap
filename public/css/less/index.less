@@ -48,7 +48,7 @@ body{
                 position: absolute;
                 padding-left:@menuHeight*0.5;
                 width:auto;
-                .nav-header{
+                .nav-btn{
                     display: none;
                     & *{
                         display: none;
@@ -58,15 +58,20 @@ body{
             @media screen and (max-width:768px){
                 width:100%;
                 position: relative;
-                .nav-header{
+                z-index: 10;
+                .nav-btn{
                     display: block;
                     float:right;
                     padding-right:@menuHeight-small*0.5;
+                    color:@white;
+                    cursor:pointer;
+                    &.open{
+                        color:@lightBlack;
+                    }
                     li{
                         height:100%;
                         display: block;
                         line-height: @menuHeight-small;
-                        cursor:pointer;
                     }
                 }
             }
@@ -102,28 +107,33 @@ body{
                 }
             }
             @media screen and (max-width:768px){
-                top:@menuHeight-small;
-                background: fadeout(@white,5%);
+                top:0;
+                background: @white;
                 width:100%;
                 text-align: center;
-                display: none;
                 position:fixed;
-                height:0;
+                height:auto;
+                padding-top: @menuHeight-small;
+                transition:height .5s ease-in-out;
+                padding-bottom: 16px;
                 .tab{
                     width:100%;
                     text-align: center;
-                    padding-left: 20%;
+                    padding-left: 15%;
                     span{
                         height:@menuHeight-small;
                         display: inline-block;
                         width:100%;
                     }
                 }
-            }
-            &.hu-open{
-                display: block;
-                height:auto;
-                transition:height .5s ease-in-out;
+                &.menu-close{
+                    display: none;
+                    height:auto;
+                    height:0;
+                    span{
+                        color:@lightBlack !important;
+                    }
+                }
             }
             .tab{
                 display: block;
@@ -136,23 +146,39 @@ body{
                     display: table-cell;
                     vertical-align: middle;
                     cursor: pointer;
+                    }
                 }
             }
-        }
         &.stick{
             box-shadow: 0px 0 11px 0px lighten(@lightBlack,40%);
-            background: fadeout(@white,5%);
+            background: @white;
             transition:background .5s ease-in-out;
+            & .nav-btn li{
+                color:@lightBlack;
+            }
              .tab{
                 &:hover{
                     background: @lightBlack;
-                    color:@white;
                     transition:background .3s ease-in-out;
+                    color:@white;
+                    @media screen and (max-width:768px){
+                        color:@lightBlack;
+                        background: lighten(@lightBlack,70%)
+                    }
+                }
+                &:active{
+                    @media screen and (max-width:768px){
+                        color:@lightBlack;
+                        background: lighten(@lightBlack,70%);
+                    }
                 }
                 &:not(:hover){
                     background: transparent;
                     color:@lightBlack;
                     transition:background .3s ease-in-out;
+                    @media screen and (max-width:768px){
+                        color:@lightBlack;
+                    }
                 }
             }
         }
@@ -166,10 +192,17 @@ body{
                     background: @white;
                     color:@lightBlack;
                     transition:background .3s ease-in-out;
+                    @media screen and (max-width:768px){
+                        color:@lightBlack;
+                        background:lighten(@lightBlack,60%);
+                    }
                 }
                 &:not(:hover){
                     background: transparent;
                     transition:background .3s ease-in-out;
+                    @media screen and (max-width:768px){
+                        color:@lightBlack;
+                    }
                 }
             }
         }

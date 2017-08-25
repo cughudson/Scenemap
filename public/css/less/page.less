@@ -282,3 +282,79 @@ main.login{
         }
     }
 }
+//hotel page
+section#hotel-slide{
+    h1{
+        font-weight: 200;
+        letter-spacing: 2px;
+    }
+    .meta-data{
+
+    }
+    .picture{
+        @media screen and (min-width:768px){
+            width:80%;
+        }
+        @media screen and (max-width:768px){
+            width:100%;
+        }
+        padding-bottom: 45%;
+        height:0;
+        margin:auto;
+        overflow: hidden;
+        position: relative;
+        img{
+            width:100%;
+        }
+        div.previous,div.next{
+            color: fadeout(@white,60%);
+            position: absolute;
+            display: flex;
+            align-items: center;
+            top:0;
+            height:100%;
+            li{
+                font-size: 3rem;
+                &:hover{
+                    color:@white;
+                    cursor: pointer;
+                }
+            }
+        }
+        div.next{
+            float:left;
+            right:12px;
+        }
+        div.previous{
+            float:right;
+            left:12px;
+        }
+        @media screen and (max-width:768px){
+            div.next,div.previous{
+                display: none;
+            }
+        }
+    }
+    #picture-navi{
+        width:80%;
+        margin:auto;
+        position: relative;
+        .navi-info{
+            width:128px;
+            height:auto;
+            .current{
+                color:red;
+                font-size: 2rem;
+            }
+            .slash{
+                font-size: 2rem;
+            }
+            .total{
+                font-size: 2rem;
+            }
+        }
+        .desp{
+            position: 
+        }
+    }
+}
