@@ -206,7 +206,7 @@ var QRCode;
 				for (var col = 0; col < nCount; col++) {
 					if (oQRCode.isDark(row, col)) {
 						var child = makeSVG("use", {"x": String(col), "y": String(row)});
-						child.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#template")
+                        child.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#template");
 						svg.appendChild(child);
 					}
 				}
@@ -334,15 +334,15 @@ var QRCode;
                 el.onerror = fOnError;
                 el.onload = fOnSuccess;
                 el.src = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="; // the Image contains 1px data.
-                return;
+
             } else if (self._bSupportDataURI === true && self._fSuccess) {
                 self._fSuccess.call(self);
             } else if (self._bSupportDataURI === false && self._fFail) {
                 self._fFail.call(self);
             }
-		};
-		
-		/**
+        }
+
+        /**
 		 * Drawing QRCode by using canvas
 		 * 
 		 * @constructor

@@ -1,59 +1,156 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>中国-江西-靖安-民宿</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-touch-fullscreen" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="stylesheet" type="text/css" href="../css/frame.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/component.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/page.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
-        <!-- <script type="text/javascript" src="../js/"></script> -->
-        <!-- <script type="text/javascript" src="../js/"></script> -->
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <a href="/" target="self">
-                    <img src="../resource/picture/scene1.jpg" alt/>
-                </a>
-            </div>
-            <div class="tabs">
-                <a class="tab" src="" target="blank"><span>退出</span></a>
+<head>
+    <title>中国-江西-靖安-民宿</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" type="text/css" href="../css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/quilljs.snow.editor.css"/>
+    <link rel='stylesheet' type='text/css' href='../css/semantic.min.css'/>
+    <!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=cUWciM1b3cacMFaSKRgTGT9W5yfh7RF7"></script> -->
+    <script type="text/javascript" src="../plugin/quill/quill.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='../js/semantic.js'></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+</head>
+<body>
+<div class="managment toolbar">
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon leaf"></i>
+            </span>
+        <span class="data">新建景点</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="ui icon cube"></i>
+            </span>
+        <span class="data">新建民宿</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon world"></i>
+            </span>
+        <span class="data">景点管理</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon cubes"></i>
+            </span>
+        <span class="data">民宿管理</span>
+    </div>
+    <!--暂时不实现  -->
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon connectdevelop"></i>
+            </span>
+        <span class="data">运行状态</span>
+    </div>
+    <div class="hu-ui menu-item active">
+            <span class="icon">
+                <i class="icon settings"></i>
+            </span>
+        <span class="data">系统管理</span>
+    </div>
+</div>
+<main class="managment-wrapper">
+    <header class='clearfix'>
+        <div class="hu-ui user">
+            <img class="portrait" src="../resource/image/bg.jpg">
+            <a class="header" href='javascript:void(0)'>邱夕燕</a>
+            <a class=''>退出</a>
             </div>
         </header>
-        <main class="managment">
-            <div class="menu">
-                <div class="clickable"><span>新建景点</span></div>
-                <div class="clickable"><span>景点管理</span></div>
-                <div class="clickable"><span>新建民宿</span></div>
-                <div class="clickable"><span>民宿管理</span></div>
-                <div class="clickable"><span>系统管理</span></div>
-                <div class="clickable"><span>运行状态</span></div>
+    <div class="managment">
+        <section id='tab-group'>
+            <div class="table-header">
+                <div class="ui top attached tabular menu">
+                    <a class="item active">用户管理</a>
+                    <a class="item">系统配置</a>
+                </div>
             </div>
-            <div class="editor-wrapper">
-                <section>
-                    <h2>日志导出</h2>
-                    <div>
-                        <input id="start" type="text" autocomplete="false" placeholder="起始日期">
-                        <input id="end" type="text" autocomplete="false" placeholder="结束日期">
-                        <button id="log-export">导出</button>
-                    </div>
-                </section>
-                <section>
-                    <h2>用户管理<sub>仅限管理员</sub></h2>
-                    <div class="user-wrapper">
-                    <div id="current-user"></div>
-                        <span id="add-user"></span>
-                    </div>
-                </section>
-                <div class="status-bar"></div>
+            <div class='content-wrapper'>
+                <div class='table-wrapper'>
+                    <table class='ui celled table'>
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>权限</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-id=''>
+                            <td>1</td>
+                            <td>邱夕燕</td>
+                            <td class='auth'>
+                                <div class="ui checkbox">
+                                    <input type="checkbox" id='scene'>
+                                    <label>景点</label>
+                                </div>
+                                <div class="ui checkbox">
+                                    <input type="checkbox" id='hotel'>
+                                    <label>民宿</label>
+                                </div>
+                                <div class="ui checkbox">
+                                    <input type="checkbox" id='state'>
+                                    <label>运行状态</label>
+                                </div>
+                            </td>
+                            <td class='action'>
+                                <span class='hu-ui action-text' data-action='delete'>删除</span>
+                                <span class='hu-ui action-text' data-action='resetpsd'>重置密码</span>
+                            </td>
+                        </tr>
+                        <tr data-id=''>
+                            <td>1</td>
+                            <td>邱夕燕</td>
+                            <td class='auth'>
+                                <div class="ui checkbox">
+                                    <input type="checkbox" id='scene'>
+                                    <label>景点</label>
+                                </div>
+                                <div class="ui checkbox">
+                                    <input type="checkbox" id='hotel'>
+                                    <label>民宿</label>
+                                </div>
+                                <div class="ui checkbox">
+                                    <input type="checkbox" id='state'>
+                                    <label>运行状态</label>
+                                </div>
+                            </td>
+                            <td class='action'>
+                                <span class='hu-ui action-text' data-action='delete'>删除</span>
+                                <span class='hu-ui action-text' data-action='resetpsd'>重置密码</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th colspan=4>
+                                <div class='icon-btn-wrapper'>
+                                    <i class='icon add user button'></i>
+                                </div>
+                            </th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-        </main>
-    </body>
+            <div class="ui message positive">
+                <div class='header'>注意事项</div>
+                <p>对用户进行权限修改，删除以及重置密码等功能，系统管理只有超级管理员才有资格访问，一般管理员没有</p>
+                <i class='ui icon close'></i>
+            </div>
+        </section>
+    </div>
+</main>
+</body>
 </html>

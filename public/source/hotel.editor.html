@@ -1,107 +1,229 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>中国-江西-靖安-民宿</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-touch-fullscreen" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="stylesheet" type="text/css" href="../css/frame.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/component.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/page.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css"/>
-        <!-- <script type="text/javascript" src="../js/"></script> -->
-        <!-- <script type="text/javascript" src="../js/"></script> -->
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <a href="/" target="self">
-                    <img src="../resource/picture/scene1.jpg" alt/>
-                </a>
+<head>
+    <title>中国-江西-靖安-民宿</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" type="text/css" href="../css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/quilljs.snow.editor.css"/>
+    <link rel='stylesheet' type='text/css' href='../css/semantic.min.css'/>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=cUWciM1b3cacMFaSKRgTGT9W5yfh7RF7"></script>
+    <script type="text/javascript" src="../plugin/quill/quill.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='../js/semantic.js'></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+</head>
+<body>
+<div class="managment toolbar">
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon leaf"></i>
+            </span>
+        <span class="data">新建景点</span>
+    </div>
+    <div class="hu-ui menu-item active">
+            <span class="icon">
+                <i class="ui icon cube"></i>
+            </span>
+        <span class="data">新建民宿</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon world"></i>
+            </span>
+        <span class="data">景点管理</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon cubes"></i>
+            </span>
+        <span class="data">民宿管理</span>
+    </div>
+    <!--暂时不实现  -->
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon connectdevelop"></i>
+            </span>
+        <span class="data">运行状态</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon settings"></i>
+            </span>
+        <span class="data">系统管理</span>
+    </div>
+</div>
+<main class="managment-wrapper">
+    <header class='clearfix'>
+        <div class="hu-ui user">
+            <img class="portrait" src="../resource/image/bg.jpg">
+            <a class="header" href='javascript:void(0)'>邱夕燕</a>
+            <a class='logout'>退出</a>
             </div>
-            <div class="tabs">
-                <a class="tab" src="" target="blank"><span>退出</span></a>
+    </header>
+    <section class="editor">
+        <div class='ui input'>
+            <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus
+                   maxlength=20>
+        </div>
+        <div class='ui divider'></div>
+        <div class='ui input'>
+            <input id="author" type="text" autocomplete=true placeholder="填写作者" maxlength=10 required val=>
+        </div>
+        <div class='ui divider'></div>
+        <div class='ui input'>
+            <input id="phoneNum" type="text" autocomplete=true placeholder="电话号码" maxlength=10 required val=>
+        </div>
+        <div class='ui divider'></div>
+        <div class="input-group">
+            <button id='geo-picker-btn' class="ui primary button" title="打开地图拾取坐标">拾取坐标</button>
+            <input id='geo-location' type='hidden'>
+            <input id='location' type='hidden'>
+            <div class="geo-data label" id='geo-data'>
             </div>
-        </header>
-        <main class="managment">
-            <div class="menu">
-                <div class="clickable" id="new-scene"><span>新建景点</span></div>
-                <div class="clickable" id="scene-managment"><span>景点管理</span></div>
-                <div class="clickable" id="new-hotel"><span>新建民宿</span></div>
-                <div class="clickable" id="hotel-managment"><span>民宿管理</span></div>
-                <div class="clickable" id="sys-managment"><span>系统管理</span></div>
-                <div class="clickable" id="sys-state"><span>运行状态</span></div>
+            <div class="ui message info" id='markerPos'>
+                <p>这里将显示拾取坐标的点的位置</p>
             </div>
-            <div class="editor-wrapper">
-                <section class="editor">
-                    <h1>新建民宿</h1>
-                    <form method="post" action="" id="editor">
-                        <div class="input-group">
-                            <h5>标题</h5>
-                            <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus>
-                        </div>
-                        <div class="input-group">
-                            <h5>地址</h5>
-                            <input id="country" type="text" autocomplete=true placeholder="详细到省，县，乡，村" required maxlength=20>
-                        </div>
-                        <div class="input-group">
-                            <h5>电话</h5>
-                            <input id="telephone" type="text" autocomplete="false" placeholder="输入电话号码" required maxlength=20>
-                        </div>
-                        <div class="input-group">
-                            <h5>拾取经纬坐标</h5>
-                            <div class="geo-picker-btn">
-                                <div role="button" class="btn">打开地图</div>
-                                <div class="geo-data bubble">
-                                    <span class="data">经纬度显示在这里</span>
-                                    <span class="close">X</span>
-                                    <input type="hidden" id="geoCorrdinate" value="" name="geoCorrdinate">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <h5>介绍信息</h5>
-                            <textarea id="intro" maxlength="200" placeholder="填写民宿的简介，不超过200字"></textarea>
-                        </div>
-                    </form>
-                    <form class="upload-area" id="upload">
-                        <h5>上传封面照片</h5>
-                        <div class="info notice"><li class="fa fa-info"></li><span>上传照片不得超过8张照片，照片需小于1M且长宽比为16:9，上传完成后，需选择其中的一张作为封面</span></div>
-                        <div class="button-area">
-                            <div class="upload-file clearfix">
-                                <span class="btn">选择</span>
-                                <input type="file" multiple=false/>
-                            </div>
-                            <button for="upload">上传</button>
-                        </div>
-                        <div id="picture-area">上传的图片将显示在这里</div>
-                    </form>
-                    <div class="row">
-                        <button id="save">保存</button>
-                        <button for="editor" type="submit">提交</button>
-                    </div>
-                </section>
-                <div id="geo-picker-pannel">
-                    <div class="close-wrapper clearfix">
-                        <span class="close clickable"><li class="fa fa-close fa-2x"></li></span>
-                    </div>
-                    <div id="map"></div>
-                    <div id="pickerPoint">
-                        <span class="data"></span>
-                    </div>
-                    <div class="info notice"><li class="fa fa-info"></li><span>双击地图标定所需要选取的坐标点，确认，保存拾取数据，取消，放弃拾取</span></div>
-                    <div class="toolbar clearfix">
-                        <div class="btn draggable" id="ok">确认</div>
-                        <div class="btn draggable" id="cancel">取消</div>
-                    </div>
-                </div>
-                <div class="status-bar"></div>
+        </div>
+        <div class='ui divider'></div>
+        <div class="article-content hidden-data"></div>
+        <div class="rich-editor-wrapper">
+            <h5>旅馆描述(添加的图片每张不要超过200K)</h5>
+            <div id="rich-editor"></div>
+            <div class="drag-bar">
+                    <span>
+                        <i class="angle double down icon"></i>
+                    </span>
             </div>
-        </main>
-    </body>
+        </div>
+        <div class="row">
+            <button id="save" class='ui primary button'>保存</button>
+            <button id="publish" class='ui primary button'>发布</button>
+        </div>
+    </section>
+    <div id="geo-picker-pannel" class="panel">
+        <div class="close-wrapper clearfix">
+                <span class="close clickable">
+                    <i class="icon close"></i>
+                </span>
+        </div>
+        <div class='map-wrapper'>
+            <div id="map"></div>
+            <div id="maxisize">
+                <i class='icon maximize'></i>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $('#maxisize').click(function () {
+                    var map = $("#map")[0];
+                    if (map.webkitRequestFullscreen) {
+                        map.webkitRequestFullscreen();
+                    }
+                    if (map.mozRequestFullscreen) {
+                        map.mozRequestFullscreen();
+                    } else {
+                        // map.RequestFullscreen();
+                    }
+                })
+            })
+        </script>
+        <div class="ui message positive">
+            <p>双击地图标定所需要选取的坐标点，确认，保存拾取数据，取消，放弃拾取</p>
+        </div>
+        <div class="toolbar clearfix">
+            <div class="ui primary button cancel">取消</div>
+            <div class="ui primary button ok">确认</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var map = (new Component.PickerMap("map", "武汉", 11, "baidu")).init();
+            map.enableDbClick();
+
+            window.rightPanel = new Component.RightPanel("#geo-picker-pannel");
+            rightPanel.Close(function () {
+                console.log("close");
+            });
+            $("#geo-picker-btn").click(
+                function () {
+                    rightPanel.Open(function () {
+                        console.log("open");
+                    });
+                }
+            );
+            rightPanel.Cancel(function () {
+                console.log("cancel");
+            });
+            rightPanel.OK(function (ele) {
+                $('#geo-data').children().remove();
+                $("#geo-data").append('<a class="ui teal tag label">' + "<span>" + map.value2() + "</span>" + "<i class='delete icon'></i></a>");
+                $("#markerPos p").text(map.location);
+                $("input#geo-location").val(map.value());
+                $("input#location").val(map.location);
+            });
+            $("input[type='radio']").click(function () {
+                $('#scenetype').val($(this).data("type"));
+            });
+            var editor = new Component.quillEditor("#rich-editor");
+
+            $(document).on('click', '.tag .delete', function () {
+                $(this).parents('.tag').remove();
+            });
+            //保存文章信息
+            $("#save").click(function () {
+
+                var saveData = {};
+                saveData.title = $('#title').val();
+                saveData.author = $('#author').val();
+                saveData.phoneMim = $("#phoneNum");
+                saveData.corrdinate = $('input#geo-location').val();
+                saveData.address = $("input#location").val();
+                saveData.content = editor.GetContents();
+                if (publishData.title == "" || publishData.phoneNum == "") {
+
+                }
+                $.post('./save.php', {type: 'save', 'data': saveData}, function (respondData) {
+                    var data = JSON.parse(respondData);
+                    if (data.status) {
+                        alert("保存成功");
+                    } else {
+                        alert("保存失败");
+                    }
+                });
+            });
+            //发布文章信息
+            $("#publish").click(function () {
+                if ($(this).hasClass("disabled")) return;
+                var that = $(this);
+                var publishData = {};
+                publishData.title = $('#title').val();
+                publishData.author = $('#author').val();
+                publishData.phoneMim = $("#phoneNum");
+                publishData.corrdinate = $('input#geo-location').val();
+                publishData.address = $("input#location").val();
+                publishData.content = editor.GetContents();
+
+                $.post('./save.php', {type: 'save', 'data': publishData}, function (respondData) {
+                    var data = JSON.parse(respondData);
+                    if (data.status) {
+                        alert("发布成功");
+                        that.addClass("disabled");
+                    } else {
+                        alert("发布失败");
+                    }
+                });
+            });
+        })
+    </script>
+</main>
+</body>
 </html>

@@ -1,157 +1,217 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>中国-江西-靖安-民宿</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-touch-fullscreen" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="stylesheet" type="text/css" href="../css/frame.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/component.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/page.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/theme.normal.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/quilljs.snow.editor.css"/>
-        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=cUWciM1b3cacMFaSKRgTGT9W5yfh7RF7"></script>
-        <script type="text/javascript" src="../plugin/quill/quill.js"></script>
-        <script type="text/javascript" src="../js/lib/zepto.js"></script>
-        <script type="text/javascript" src="../js/lib/zepto.fx.js"></script>
-        <script type="text/javascript" src="../js/common.js"></script>
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <a href="/" target="self">
-                    <img src="../resource/picture/scene1.jpg" alt/>
-                </a>
+
+<head>
+    <title>中国-江西-靖安-民宿</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" type="text/css" href="../css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/quilljs.snow.editor.css"/>
+    <link rel='stylesheet' type='text/css' href='../css/semantic.min.css'/>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=cUWciM1b3cacMFaSKRgTGT9W5yfh7RF7"></script>
+    <script type="text/javascript" src="../plugin/quill/quill.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='../js/semantic.js'></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+</head>
+<body>
+<div class="managment toolbar">
+    <div class="hu-ui menu-item active">
+            <span class="icon">
+                <i class="icon leaf"></i>
+            </span>
+        <span class="data">新建景点</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="ui icon cube"></i>
+            </span>
+        <span class="data">新建民宿</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon world"></i>
+            </span>
+        <span class="data">景点管理</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon cubes"></i>
+            </span>
+        <span class="data">民宿管理</span>
+    </div>
+    <!--暂时不实现  -->
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon connectdevelop"></i>
+            </span>
+        <span class="data">运行状态</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon settings"></i>
+            </span>
+        <span class="data">系统管理</span>
+    </div>
+</div>
+<main class="managment-wrapper">
+    <header class='clearfix'>
+        <div class="hu-ui user">
+            <img class="portrait" src="../resource/image/bg.jpg">
+            <a class="header" href='javascript:void(0)'>邱夕燕</a>
+            <a class='logout'>退出</a>
+        </div>
+    </header>
+    <section class="editor">
+        <div class='ui input'>
+            <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus
+                   maxlength=20>
+        </div>
+        <div class='ui divider'></div>
+        <div>
+            <div class="ui radio checkbox">
+                <input type="radio" name="frequency" checked="checked" data-type=0>
+                <label>自然风光</label>
             </div>
-            <div class="tabs">
-                <a class="tab" src="" target="blank"><span>退出</span></a>
+            <div class="ui radio checkbox">
+                <input type="radio" name="frequency" data-type=1>
+                <label>人文风光</label>
             </div>
-        </header>
-        <main class="managment">
-            <div class="menu">
-                <div class="clickable" id="new-scene" target="scene.editor.html"><span>新建景点</span></div>
-                <div class="clickable" id="scene-managment" target=""><span>景点管理</span></div>
-                <div class="clickable" id="new-hotel"><span>新建民宿</span></div>
-                <div class="clickable" id="hotel-managment"><span>民宿管理</span></div>
-                <div class="clickable" id="sys-managment"><span>系统管理</span></div>
-                <div class="clickable" id="sys-state"><span>运行状态</span></div>
+            <input type='hidden' id='scenetype' value=0>
+        </div>
+        <div class='ui divider'></div>
+        <div class='ui input'>
+            <input id="author" type="text" autocomplete=true placeholder="填写作者" maxlength=10 required val=>
+        </div>
+        <div class='ui divider'></div>
+        <div class="input-group">
+            <button id='geo-picker-btn' class="ui primary button" title="打开地图拾取坐标">拾取坐标</button>
+            <input id='geo-location' type='hidden'>
+            <input id='location' type='hidden'>
+            <div class="geo-data label" id='geo-data'>
             </div>
-            <div class="editor-wrapper">
-                <section class="editor">
-                    <h1>新建景点</h1>
-                    <form method="post" action="" id="editor">
-                        <div class="input-group">
-                            <h5>标题：</h5>
-                            <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus maxlength=20>
-                        </div>
-                        <div class="input-group">
-                            <h5>地址：</h5>
-                            <input id="country" type="text" autocomplete=true placeholder="详细到省，县，乡，村" required maxlength=20>
-                        </div>
-                        <div class="input-group radio">
-                            <h5>景点类别：</h5>
-                            <span>
-                            	<input id="nature-scene" type="radio" name="scene-type" value="nature"><label for="nature-scene">自然风景</label>
-                            </span>
-                            <span>
-                            	<input id="culture-scene" type="radio" name="scene-type" value="culture"><label for="culture-scene">人文风景</label>
-                            </span>
-                        </div>
-                        <div class="input-group">
-                            <h5>发布信息：</h5>
-                            <input id="author" type="text" autocomplete=true placeholder="填写作者" maxlength=10 required> 
-                            <input id="publish-time" type="text" role="time" format="YYYY-MM-DD" autocomplete=true placeholder="填写发布时间" maxlength=10 required> 
-                        </div>
-                        <div class="input-group">
-                            <h5>拾取经纬坐标</h5>
-                            <div class="geo-picker-btn">
-                                <div role="button" class="btn" title="打开地图拾取坐标">拾取坐标</div>
-                                <div class="geo-data bubble">
-                                    <span class="data">这里显示拾取的坐标</span>
-                                    <input type="hidden" name="geoData">
-                                    <span class="close">X</span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <form class="upload-area" id="upload">
-                        <h5>上传封面照片</h5>
-                        <div class="info notice"><li class="fa fa-info"></li><span>从本地电脑上选择一张照片作为这篇文章的封面，上传的照片小于1M，长宽比为16:9</span></div>
-                        <div class="button-area">
-                            <div class="upload-file clearfix">
-                                <span class="btn">
-                                    <span>选择</span>
-                                    <input type="file" multiple=false/>
-                                </span>
-                            </div>
-                            <button for="upload">上传</button>
-                        </div>
-                        <div id="picture-area">上传的图片将显示在这里</div>
-                    </form>
-                    <div class="article-content hidden-data"></div>
-                    <div class="rich-editor-wrapper">
-                        <h5>文章内容</h5>
-                        <div id="rich-editor">
-                        </div>
-                        <div class="drag-bar">
-                            <span><li class="fa fa-angle-double-down fa-2x"></li></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <button id="save">保存</button>
-                        <button for="editor" type="submit">提交</button>
-                    </div>
-                </section>
-                <div id="overlay" class="fullscreen hidden"></div>
-                <div id="geo-picker-pannel" class="panel">
-                    <div class="close-wrapper clearfix">
-                        <span class="close clickable"><li class="fa fa-close fa-2x"></li></span>
-                    </div>
+            <div class="ui message info" id='markerPos'>
+                <p>这里将显示拾取坐标的点的位置</p>
+            </div>
+        </div>
+        <div class='ui divider'></div>
+        <div class="article-content hidden-data"></div>
+        <div class="rich-editor-wrapper">
+            <h5>景点描述</h5>
+            <div id="rich-editor">
+            </div>
+            <div class="drag-bar">
+                <span><i class="angle double down icon"></i></span>
+            </div>
+        </div>
+        <div class="row">
+            <button id="save" class='ui primary button'>保存</button>
+            <button id="publish" class='ui primary button'>发布</button>
+        </div>
+    </section>
+    <div id="geo-picker-pannel" class="panel">
+        <div class="close-wrapper clearfix">
+            <span class="close clickable"><i class="icon close"></i></span>
+        </div>
+        <div class='map-wrapper'>
                     <div id="map"></div>
-                    <div id="pickerPoint">
-                        <span class="data"></span>
+            <div id="maxisize">
+                <i class='icon maximize'></i>
                     </div>
-                    <div class="info notice"><li class="fa fa-info"></li><span>双击地图标定所需要选取的坐标点，确认，保存拾取数据，取消，放弃拾取</span></div>
-                    <div class="toolbar clearfix">
-                        <div class="btn draggable cancel">取消</div>
-                        <div class="btn draggable ok">确认</div>
-                    </div>
+        </div>
+        <script>
+            $(function () {
+                $('#maxisize').click(function () {
+                    var map = $("#map")[0];
+                    if (map.webkitRequestFullscreen) {
+                        map.webkitRequestFullscreen();
+                    }
+                    if (map.mozRequestFullscreen) {
+                        map.mozRequestFullscreen();
+                    } else {
+                        //map.RequestFullscreen();
+                    }
+                })
+            })
+        </script>
+        <div class="ui message positive"><p>双击地图标定所需要选取的坐标点，确认，保存拾取数据，取消，放弃拾取</p></div>
+        <div class="toolbar clearfix">
+            <div class="ui primary button cancel">取消</div>
+            <div class="ui primary button ok">确认</div>
                 </div>
-                <div class="status-bar">
-                </div>
-                <script type="text/javascript">
-                    $(document).ready(function(){
-                        var bubble = new Component.BubbleText(".bubble");
-                        debugger;
-                        var map = new Component.PickerMap("#map",[116.404, 39.915],11);
-                        map.enableMousemove();
-                        map.enableDbClick();
-                        window.rightPanel = new Component.RightPanel("#geo-picker-pannel")
-                        rightPanel.Close(function(){
-                            console.log("close");
-                        });
-                        $(".geo-picker-btn .btn").click(
-                            function(){
-                                rightPanel.Open(function(){
-                                    console.log("open");
-                                });
-                            }
-                        )
-                        rightPanel.Cancel(function(){
-                            console.log("cancel");
-                        });
-                        rightPanel.OK(function(ele){
-                            bubble.text(map.value());
-                        });
-                        var editor = new Component.quillEditor("#rich-editor");
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var map = (new Component.PickerMap("map", "武汉", 11, "baidu")).init();
+            map.enableDbClick();
+
+            window.rightPanel = new Component.RightPanel("#geo-picker-pannel");
+            rightPanel.Close(function () {
+                console.log("close");
+            });
+            $("#geo-picker-btn").click(
+                function () {
+                    rightPanel.Open(function () {
+                        console.log("open");
+                    });
+                }
+            );
+            rightPanel.Cancel(function () {
+                console.log("cancel");
+            });
+            rightPanel.OK(function (ele) {
+                $('#geo-data').children().remove();
+                $("#geo-data").append('<a class="ui teal tag label">' + "<span>" + map.value2() + "</span>" + "<i class='delete icon'></i></a>");
+                $("#markerPos p").text(map.location);
+                $("input#geo-location").val(map.value());
+                $("input#location").val(map.location);
+            });
+            $("input[type='radio']").click(function () {
+                $('#scenetype').val($(this).data("type"));
+            });
+            var editor = new Component.quillEditor("#rich-editor");
+
+            $(document).on('click', '.tag .delete', function () {
+                $(this).parents('.tag').remove();
+            });
+            //保存文章信息
+            $("#save").click(function () {
+
+                var title = $('#title').val();
+                var sceneType = $('#sceneType').val();
+                var author = $('#author').val();
+                var corrdinate = $('input#geo-location').val();
+                var address = $("input#location").val();
+                var content = quill.GetContents();
+
+                $.post('./save.php', data, function () {
+
+                });
+            });
+            //发布文章信息
+            $("#publish").click(function () {
+
+                var title = $('#title').val();
+                var sceneType = $('#sceneType').val();
+                var author = $('#author').val();
+                var corrdinate = $('input#geo-location').val();
+                var address = $("input#location").val();
+                var content = quill.GetContents();
+
+                $.post('./save.php', data, function () {
+
+                });
                     })
-                </script>
-            </div>
+        })
+    </script>
         </main>
     </body>
 </html>

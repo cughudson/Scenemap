@@ -106,7 +106,7 @@
         function createIcons ($container, $data) {
             var $sites = getSites($data);
 
-            $data.mode == 'prepend' ? $sites.reverse() : $sites
+            $data.mode == 'prepend' ? $sites.reverse() : $sites;
 
             if (!$sites.length) {return;}
 
@@ -163,8 +163,7 @@
         function getSites ($data) {
             if ($data['mobileSites'].length === 0 && $data['sites'].length) {
                 $data['mobileSites'] = $data['sites'];
-            };
-
+            }
             var $sites = (isMobileScreen() ? $data['mobileSites'] : ($data['sites'].length ? $data['sites']: [])).slice(0);
             var $disabled = $data['disabled'];
 

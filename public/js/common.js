@@ -17,7 +17,7 @@ $(document).ready(
                         [{list:'ordered'},{list:'bullet'}]
                     ]
                 },
-                placeholder: '填写要发布的内容,采用图文排版的形式',
+                placeholder: '填写要发布的内容,采用图文形式进行排版',
                 theme: 'snow'  // or 'bubble'
             };
             var config = config||defaultConfig;
@@ -29,6 +29,7 @@ $(document).ready(
             var startMouseMove = true;
             var startPosAtY = 0;
             var editorH ;
+            this.quill = quill;
             dragToolbar.on("mousedown", function(evt){
                 startMouseMove = true;
                 startPosAtY = evt.pageY;
@@ -50,6 +51,9 @@ $(document).ready(
             this.enable = function(){
                 this.enable();
             };
+            this.viewer = function () {
+
+            };
             this.Content = function(){
                 if(arguments.length == 0){
                     return this.getContents();
@@ -59,25 +63,40 @@ $(document).ready(
             }
             return quill;
         };
-        
-        Component.PickerMap = function(id, center, level){
 
-            var id = id.replace("#","");
+        Component.PickerMap = function (id, city, level, type) {
+
+            this.id = id;
             var mapCenter;
             var currentPickPos = [];
             var currentMarker = [];
+            this.type = type;
+            this.city = city;
+            this.location = null;
+            this.init = function () {
 
-            if(!(center instanceof Array)){
-                console.log("请输入正确的位置数据格式");
-                return;
+                if (this.type == "baidu") {
+                    this.map = new BMap.Map(this.id);
+                    this.map.enableZoom = true;
+                    this.map.addControl(new BMap.MapTypeControl({
+                        mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP],
+                        anchor: BMAP_ANCHOR_TOP_LEFT
+                    }));
+                    window.map = this.map;
+                    this.map.enableScrollWheelZoom();
+                    this.map.disableDoubleClickZoom()
+                    this.map.centerAndZoom(this.city, level);
+                    return this;
+                } else {
+                    var ele = $("#" + this.id)[0];
+                    var GeoCoder = new google.maps.Geocoder();
+                    this.map = new google.maps.Map(ele, {
+                        center: {lat: 12.45, lng: 36.90},
+                        zoom: 8
+                    })
+                    return this;
+                }
             }
-            this.map = new BMap.Map(id);
-            this.map.enableZoom = true;
-            this.mapCenter = new BMap.Point(center[0], center[1]);
-            this.map.enableScrollWheelZoom();
-            this.map.disableDoubleClickZoom()
-            this.map.centerAndZoom(new BMap.Point(center[0], center[1]), level);
-
             this.addMarker = function(pt){
                 if(currentMarker.length == 1){
                     this.map.removeOverlay(currentMarker.pop());
@@ -94,7 +113,10 @@ $(document).ready(
                 return currentPickPos[0];
             };
             this.value = function(){
-                return "lng: " + currentPickPos[0].lng + ",  lat: " + currentPickPos[0].lat;
+                return JSON.stringify(currentPickPos[0]);
+            };
+            this.value2 = function () {
+                return currentPickPos[0].lng + ',' + currentPickPos[0].lat;
             };
             this.enableDbClick = function(){
                 var that = this;
@@ -106,17 +128,22 @@ $(document).ready(
                     }
                     currentPickPos.push(point);
                     that.addMarker(point);
+                    var geoCode = new BMap.Geocoder();
+
+                    geoCode.getLocation(point, function (rs) {
+                        var addComp = rs.addressComponents;
+                        that.location = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + "," + addComp.streetNumber;
+                    })
                 });
             };
-            this.enableMousemove = function(){
-                var that = this;
-                this.map.addEventListener("mousemove", function(evt){
-                    var pixel =  new BMap.Pixel(evt.offsetX, evt.offsetY);
-                    var point = that.map.pixelToPoint(pixel);
-                    $(".data",$("#"+id).next()).html("lng: " + point.lng + ",  lat: " + point.lat);
-                });
-            }
-            return this;
+            // this.enableMousemove = function(){
+            //     var that = this;
+            //     this.map.addEventListener("mousemove", function(evt){
+            //         var pixel =  new BMap.Pixel(evt.offsetX, evt.offsetY);
+            //         var point = that.map.pixelToPoint(pixel);
+            //         $(".data",$("#"+id).next()).html("lng: " + point.lng + ",  lat: " + point.lat);
+            //     });
+            // }
         };
         //right panel;
         Component.RightPanel = function(id){
@@ -128,8 +155,12 @@ $(document).ready(
 
             ele.Close = function(closeFunc){
                 close.on("click", function(evt){
-                    ele.animate({right:'-100%'},500,'ease-in-out',function(){ele.addClass("hidden")});
-                    overlay.animate({opacity:0},500,'ease-in-out',function(){overlay.addClass("hidden")});
+                    ele.animate({right: '-100%'}, 500, 'swing', function () {
+                        ele.addClass("hidden")
+                    });
+                    overlay.animate({opacity: 0}, 500, 'swing', function () {
+                        overlay.addClass("hidden")
+                    });
                     if($.isFunction(closeFunc)){
                         closeFunc();
                     }else{
@@ -137,12 +168,16 @@ $(document).ready(
                     }
                 })
             };
-            ele.OK = function(okFunc){
+            ele.OK = function (Func) {
                 ok.on('click', function(evt){
-                    ele.animate({right:'-100%'},500,'ease-in-out',function(){ele.addClass("hidden")});
-                    overlay.animate({opacity:0},500,'ease-in-out',function(){overlay.addClass("hidden")});
-                    if($.isFunction(okFunc)){
-                        okFunc();
+                    ele.animate({right: '-100%'}, 500, 'swing', function () {
+                        ele.addClass("hidden")
+                    });
+                    overlay.animate({opacity: 0}, 500, 'swing', function () {
+                        overlay.addClass("hidden")
+                    });
+                    if ($.isFunction(Func)) {
+                        Func();
                     }else{
                         console.error("Fatal Error")
                     }
@@ -150,8 +185,12 @@ $(document).ready(
             };
             ele.Cancel = function(cancelFunc){
                 cancel.on('click', function(evt){
-                    ele.animate({right:'-100%'},500,'ease-in-out',function(){ele.addClass("hidden")});
-                    overlay.animate({opacity:0},500,'ease-in-out',function(){overlay.addClass("hidden")});
+                    ele.animate({right: '-100%'}, 500, 'swing', function () {
+                        ele.addClass("hidden")
+                    });
+                    overlay.animate({opacity: 0}, 500, 'swing', function () {
+                        overlay.addClass("hidden")
+                    });
                     if($.isFunction(cancelFunc)){
                         cancelFunc();
                     }else{
@@ -161,58 +200,17 @@ $(document).ready(
             };
             ele.Open = function(){
                 ele.removeClass("hidden");
-                ele.animate({right:'0'},500,'ease-in-out');
+                ele.animate({right: '0'}, 500, 'swing');
                 overlay.removeClass("hidden");
-                overlay.animate({opacity:0.5},500,'ease-in-out');
+                overlay.animate({opacity: 0.5}, 500, 'swing');
             };
             return ele;
         };
-        //TimeInput component
-        Component.TimeInput = function(id,errCls, normalCls){
-            var obj = {};
-            var ele = $(id);
-            var format = ele.attr("format");
-            obj.test = function(format){
-                var value = ele.value;
-                //\d{4} YYYY
-                //(((0[1-9]|(1[0-2])))) MM
-                //((0[1-9])|([1-2][0-9])|(3[0-1]))) DD
-                var regex =  /\d{4}-(((0[1-9])|(1[0-2])))(-((0[1-9])|([1-2][0-9])|(3[0-1])))/ig;
-                return regex.test(value);
-            };
-            ele.on("keyup", function(){
-                if(obj.test){
-                    ele.removeCllass(errCls).addClass(normalCls);
-                }else{
-                    ele.removeCllass(errCls).addClass(normalCls);
-                }
-            });
-            return obj;
-        };
-        Component.BubbleText = function(cls){
-            var bubble = $(cls);
-            bubble.text = function(){
-                if(arguments.length == 0){
-                    return $(".data",bubble).html();
-                }else{
-                    $(".data",bubble).html(arguments[0]);
-                    $("input",bubble).val(arguments[0]);
-                }
-            };
-            bubble.delete = function(){
-                $(".close",bubble).on("click", function(evt){
-                   $(".data",$(evt.target).parent(cls)).html("这里显示拾取的坐标");
-                   $("input",$(evt.target).parent(cls)).val("");
-                })
-            };
-            bubble.delete();
-            return bubble;
-        };
-        Component.StaticMap = function(id, center, level){
-            var id = id.replace("#","");
+        Component.BaiduStaticMap = function (id, city, level) {
+            var id = id.replace("#", "");
             var mapCenter;
 
-            if(!$.isArray(center)){
+            if (!$.isArray(center)) {
                 console.log("请输入正确的位置数据格式");
                 return;
             }
@@ -220,14 +218,37 @@ $(document).ready(
             this.map.enableZoom = true;
             this.mapCenter = new BMap.Point(center[0], center[1]);
             this.map.centerAndZoom(new BMap.Point(center[0], center[1]), level);
-            this.moveTo = function(pt){
-                this.map.panTo(new BMap.Point(pt[0], pt[1]),2000);
+            this.moveTo = function (pt) {
+                this.map.panTo(new BMap.Point(pt[0], pt[1]), 2000);
             };
-            this.zoomToPoint = function(pt){
-                if(this.getZoom() == 12) return;
-                this.map.centerAndZoom(new BMap.Point(pt[0],pt[1]),12);
+            this.zoomToPoint = function (pt) {
+                if (this.getZoom() == 12) return;
+                this.map.centerAndZoom(new BMap.Point(pt[0], pt[1]), 12);
             };
-            this.ViewFitTheBounds = function(){
+            this.ViewFitTheBounds = function () {
+
+            };
+        };
+        Component.GoogleStaticMap = function (id, city, level) {
+            var id = id.replace("#", "");
+            var mapCenter;
+
+            if (!$.isArray(center)) {
+                console.log("请输入正确的位置数据格式");
+                return;
+            }
+            this.map = new BMap.Map(id);
+            this.map.enableZoom = true;
+            this.mapCenter = new BMap.Point(center[0], center[1]);
+            this.map.centerAndZoom(new BMap.Point(center[0], center[1]), level);
+            this.moveTo = function (pt) {
+                this.map.panTo(new BMap.Point(pt[0], pt[1]), 2000);
+            };
+            this.zoomToPoint = function (pt) {
+                if (this.getZoom() == 12) return;
+                this.map.centerAndZoom(new BMap.Point(pt[0], pt[1]), 12);
+            };
+            this.ViewFitTheBounds = function () {
 
             };
         };

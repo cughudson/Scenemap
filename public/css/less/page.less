@@ -1,360 +1,123 @@
-@import "param.less";
-//the picture must be the same size
-//scene, hotel
-article{
-    @media screen and (min-width:960px){
-        padding-left: 48px;
-    }
-    @media screen and (max-width:960px){
-        padding: 2%;
-    }
-    h1{
-        text-align: left;
-        font-family: Arial, Helvetica, sans-serif;
-        line-height: 200%;
-        padding-bottom: 16px;
-        padding-left:16px;
-    }
-    .meta-data{
-        padding: 12px;
-        margin: 16px 0;
-        border-bottom:  1px solid @lightBlack;
-        font-size: .8rem;
-        span{
-            margin:0 8px;
-        }
-        .post-info{
-            float:left;
-            line-height: 150%;
-        }
-        .view-number{
-            float:right;
-        }
-        .love{
-            float:right;
-        }
-    }
-    #article-content{
-        line-height: 150%;
-        padding: 32px 16px;
-    }
-    .share{
-        margin: 24px 0;
-    }
-}
-aside{
-    @media screen and (max-width:860px){
-        #static-map,#recommand-wrapper{
-            padding: 4%;
-        }
-    }
-    #static-map{
-        h3{
-            line-height: 150%;
-            li{
-                padding: 0 8px 0 4px;
-                display:inline-block;
-                color:red;
-            }
-        }
-        #map{
-            width:100%;
-            padding-bottom:61.8%;
-            background: gray;
-        }
-        .address{
-            line-height: 150%;
-            padding: 24px 0;
-            font-size: .8rem;
-            .title{
-                font-weight:bold;
-                padding-right:6px;
-            }
-            li{
-                padding: 0 6px 0 4px;
-                display: inline-block;
-                color:red;
-            }
-        }
-    }
-
-    #recommand-wrapper{
-        margin-bottom: 42px;
-        padding-top: 16px;
-        border-top:1px solid @lightBlack;
-        h3{
-            line-height: 150%;
-            li{
-                padding: 0 8px 0 4px;
-                display:inline-block;
-                color:red;
-            }
-        }
-        .recommand{
-            text-align: center;
-        }
-    }
-}
-
-//Hotel List
-#hotel-list{
-    width:100%;
-    text-align: center;
-}
-//管理页面
-.editor-wrapper,.managment-wrapper{
-    .editor,.managment{
-        padding-left: 42px;
-        h1{
-            padding: 12px 0;
-            width:480px;
-            border-bottom: 1px solid gray;
-        }
-        form{
-            margin-top:24px;
-            .input-group{
-                width:100%;
-                padding: 8x 0 0 0;
-                input[type="text"]{
-                    width:320px;
-                    display: inline-block;
-                    &#publish-time,&#author{
-                        width:150px;
-                        &:last-child{
-                            margin-left: 20px;
-                        }
-                    }
-                }
-                &.radio{
-                    span{
-                        display: inline-block;
-                        margin:0 12px;
-                    }
-                    label{
-                        font-size: .8rem;
-                        line-height: 150%;
-                        padding:0 8px;
-                    }
-                }
-                textarea{
-                    width:640px;
-                    resize:none;
-                    height:96px;
-                    box-sizing: border-box;
-                }
-            } 
-        }
-    }
-}
-.upload-area{
-    margin: 24px 0;
-    padding:24px 0;
-    border-top:1px solid gray;
-    border-bottom:1px solid gray;
-    width:640px;
-    .button-area{
+.clearfix {
+  &:after {
+    content: "";
         display: block;
-    }
-    #picture-area{
-        background:@lightGray;
-        padding:24px;
-        margin:12px 0 0 0;
-        max-width:640px;
-        border-radius: 4px;
-        border:1.5px dotted gray;
+    clear: both;
     }
 }
-//map page
-header.map{
-    //opacity: 0.05;
-    background: transparent;
-    box-shadow: none;
-    width:auto !important;
-    position: absolute;
-    max-width:320px !important; 
-}
-#map-cantainer{
-    position: absolute;
-    width:100%;
-    top:0px;
-    bottom: 0;
-    background: gray;
-    #map{
-        width:100%;
-        height:100%;
-        position: relative;
-        z-index: -1;
-    }
-    #switch{
-        z-index: 10;
-        position: absolute;
-        right:16px;
-        top:16px;
-        height:48px;
-        background:@lightGray;
-        color:@lightBlack;
-        box-shadow: 1px 1px 1px 1px gray;
-        border-radius: 2px;
-        span{
-            box-sizing: border-box;
-            height:48px;
-            width:81px;
-            display: inline-block;
-            line-height: 48px;
-            font-size: 12px;
-            text-align: center;
-            float:left;
-            &:hover{
-                background: fadeout(black,90%);
-            }
-            &.checked{
-                border-bottom: 4px solid @skyBlue;
-            }
-            &:first-child{
-                border-right:1px solid darken(@lightGray,40%);
-            }
-            &:last-child{
-                border-left:1px solid darken(@lightGray,40%);
-            }
-        }
-    }
-    .logo{
-        position: absolute;
-        bottom: 32px;
-        @media screen and (min-width:640px){
-            right:@menuHeight*0.5;
-        }
-        @media screen and (max-width:640px){
-            right:@menuHeight*0.25;
-        }
-        height:64px;
-        width:auto;
-        a{
-            display: block;
-            height:100%;
-            width:100%;
-            padding: 8px 0;
-            img{
-                height:inherit;
-                width:auto;
-            }
-        }
-    }
-}
-// login page
-body.login{
-    @media screen and (min-width:640px){
-        background: @lightGray;
-    }
-    @media screen and (max-width:640px){
-        background: @white;
-    }
-}
-main.login{
-    background: @white;
-    margin-top: 15% !important;
-    position: relative;
-    box-sizing: border-box;
-    @media screen and (min-width:640px){
-        border:1px solid @boxShadowColor;
-        border-radius: 4px;
-        box-shadow: 1px 1px 8px 0px @boxShadowColor;
-        width:320px;
-        margin:auto;
-        padding: 48px 48px;
-    }
-    @media screen and (max-width:640px){
-        width:100%;
-        max-width: 480px;
-        margin:auto;
-        padding: 32px;
-    }
-    form{
-        width:100%;
-        input{
-            width:100%;
-            margin:12px 0;
-            box-sizing: border-box;
-        }
-        button{
-            margin-top: 24px;
-            width: 100%;
-        }
-    }
-}
-//hotel page
-section#hotel-slide{
-    h1{
-        font-weight: 200;
-        letter-spacing: 2px;
-    }
-    .meta-data{
 
+.managment.toolbar {
+  position: fixed;
+  left: 0;
+  height: 100%;
+  background: #495b64;
+}
+
+.managment-wrapper {
+  position: absolute;
+  left: 84px;
+  right: 0;
+  padding: 0 36px 48px 36px;
+  width: auto;
+  overflow: auto;
+  header {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 16px 0 32px 0;
+    .hu-ui.user {
+      position: relative;
+      float: right;
+      right: 32px;
+        }
+    .help {
+      float: right;
     }
-    .picture{
-        @media screen and (min-width:768px){
-            width:80%;
-        }
-        @media screen and (max-width:768px){
-            width:100%;
-        }
-        padding-bottom: 45%;
-        height:0;
-        margin:auto;
-        overflow: hidden;
+    }
+  .managment {
+    min-width: 640px;
+    max-width: 960px;
+    width: 70%;
+    }
+  .editor {
+    width: 80%;
+    max-width: 700px;
+    min-width: 640px;
+  }
+  .managment,
+  .editor {
         position: relative;
-        img{
-            width:100%;
-        }
-        div.previous,div.next{
-            color: fadeout(@white,60%);
-            position: absolute;
-            display: flex;
-            align-items: center;
-            top:0;
-            height:100%;
-            li{
-                font-size: 3rem;
-                &:hover{
-                    color:@white;
+    .table-header {
+      .button-group {
+        right: 0;
+        position: absolute;
+        padding: 8px 0;
+        .button {
+          width: 24px;
+          height: 24px;
+          float: right;
+          font-size: 18px;
+          color: gray;
+          margin: 0 8px;
+          padding: 3px;
                     cursor: pointer;
-                }
-            }
+          &:active {
+            color: darken(gray, 15%);
+          }
         }
-        div.next{
-            float:left;
-            right:12px;
-        }
-        div.previous{
-            float:right;
-            left:12px;
-        }
-        @media screen and (max-width:768px){
-            div.next,div.previous{
-                display: none;
-            }
-        }
+      }
     }
-    #picture-navi{
-        width:80%;
-        margin:auto;
-        position: relative;
-        .navi-info{
-            width:128px;
-            height:auto;
-            .current{
-                color:red;
-                font-size: 2rem;
-            }
-            .slash{
-                font-size: 2rem;
-            }
-            .total{
-                font-size: 2rem;
-            }
+    .auth .checkbox {
+      margin-left: 8px;
+    }
+    .input {
+      #title {
+        min-width: 280px;
+        max-width: 360px;
+        width: 50%;
+      }
+      .dropdown {
+        margin: 0 12px;
+        &:first {
+          margin: 0;
         }
-        .desp{
-            position: 
+      }
+    }
+    .input-group {
+      .geo-data.label {
+        display: inline-block;
+        margin-left: 32px;
+      }
+    }
+    .checkbox:last-child {
+      padding-left: 12px;
+    }
+    .rich-editor-wrapper {
+      width: 100%;
+      margin-bottom: 32px;
+      #rich-editor {
+        height: 240px;
+      }
+      .drag-bar {
+        border: 1px solid #cbcbcb;
+        padding: 6px;
+        text-align: center;
+        span {
+          width: 100%;
+          cursor: n-resize;
+        }
+      }
+    }
+    table {
+      .loader,
+      .message {
+        margin: 24px auto;
+      }
+      tfoot {
+        .meta-data {
+          float: left;
+        }
+      }
         }
     }
 }
