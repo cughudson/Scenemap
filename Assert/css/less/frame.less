@@ -1,0 +1,154 @@
+@import 'param.less';
+
+*, html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-size: 16px;
+  section {
+    background: @white;
+  }
+}
+
+main {
+  height: auto;
+}
+
+main#index {
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  position: relative;
+}
+
+main.scene, main.hotel {
+  position: relative;
+  @media screen and (min-width: 960px) {
+    padding-top: 64px;
+    width: 85%;
+    min-width: 900px;
+    max-width: 1024px;
+    margin: 64px auto 32px auto;
+  }
+  @media screen and (max-width: 960px) {
+    padding-top: 64px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+}
+
+main.managment {
+  width: 100%;
+  min-width: 820px;
+  height: auto;
+  position: relative;
+  margin-top: 64px;
+  .managment-wrapper, .editor-wrapper {
+    position: absolute;
+    left: 240px;
+    right: 0px;
+    height: auto;
+    padding-top: 42px;
+    margin-bottom: 128px;
+    .editor {
+      position: relative;
+    }
+  }
+}
+
+//景点详情，民宿详情
+main.scene, main.hotel {
+  .article-wrapper, aside {
+    height: auto;
+  }
+  @media screen and (min-width: 960px) {
+    .article-wrapper {
+      float: right;
+      width: 70%;
+    }
+
+    aside {
+      float: left;
+      width: 30%;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .article-wrapper {
+      width: 100%;
+    }
+
+    aside {
+      width: 100%;
+    }
+  }
+}
+
+img {
+  line-height: 0;
+  font-size: 0;
+  display: block;
+}
+
+.clearfix {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+.huge {
+  font-size: @huge;
+}
+
+.medium {
+  font-size: @medium;
+}
+
+.small {
+  font-size: @small;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Microsoft YaHei', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 150%;
+}
+
+h2 {
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 150%;
+}
+
+h4 {
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+.hidden {
+  display: none;
+}
+

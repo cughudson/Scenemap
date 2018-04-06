@@ -1,0 +1,17 @@
+body {
+  color: #424242;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+header {
+  color: #424242;
+  background: #f9f9f9;
+}
+footer {
+  color: #424242;
+  background: #f5f5f5;
+}
+.card {
+  color: #424242;
+  background: #fff;
+  border-radius: 3px;
+}

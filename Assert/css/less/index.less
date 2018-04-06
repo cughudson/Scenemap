@@ -1,0 +1,402 @@
+@import "param.less";
+//the picture must be the same size
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.clearfix {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: lighten(@lightBlack, 70%);
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.site-wrapper {
+  height: auto;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  box-shadow: 0px 0px 2px 0px lighten(@lightBlack, 30%);
+  background: white;
+  header {
+    width: 100%;
+    max-width: 1400px;
+    position: fixed;
+    background: transparent;
+    z-index: 100;
+    @media screen and (min-width: 768px) {
+      height: @menuHeight;
+    }
+    @media screen and (max-width: 768px) {
+      height: @menuHeight-small;
+    }
+    .logo {
+      height: 100%;
+      @media screen and (min-width: 768px) {
+        position: absolute;
+        padding-left: @menuHeight*0.5;
+        width: auto;
+        .nav-btn {
+          display: none;
+          & * {
+            display: none;
+          }
+        }
+      }
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        position: relative;
+        z-index: 10;
+        .nav-btn {
+          display: block;
+          float: right;
+          padding-right: @menuHeight-small*0.5;
+          color: @white;
+          cursor: pointer;
+          &.open {
+            color: @lightBlack;
+          }
+          li {
+            height: 100%;
+            display: block;
+            line-height: @menuHeight-small;
+          }
+        }
+      }
+      a {
+        height: 100%;
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 12px 0;
+        @media screen and (max-width: 768px) {
+          padding-left: @menuHeight*0.5;
+        }
+        @media screen and (max-width: 768px) {
+          padding-left: @menuHeight-small*0.5;
+        }
+        img {
+          height: inherit;
+          width: auto;
+        }
+      }
+    }
+    nav {
+      cursor: pointer;
+      position: absolute;
+      text-transform: uppercase;
+      @media screen and (min-width: 768px) {
+        right: @menuHeight*0.5;
+        height: @menuHeight;
+        .tab {
+          padding: 0 32px;
+          span {
+            height: @menuHeight;
+          }
+        }
+      }
+      @media screen and (max-width: 768px) {
+        top: 0;
+        background: @white;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        height: auto;
+        padding-top: @menuHeight-small;
+        transition: height .5s ease-in-out;
+        padding-bottom: 16px;
+        .tab {
+          width: 100%;
+          text-align: center;
+          padding-left: 15%;
+          span {
+            height: @menuHeight-small;
+            display: inline-block;
+            width: 100%;
+          }
+        }
+
+        &.menu-close {
+          display: none;
+          height: auto;
+          height: 0;
+          span {
+            color: @lightBlack !important;
+          }
+        }
+      }
+      .tab {
+        display: block;
+        float: left;
+        height: 100%;
+        box-sizing: border-box;
+        position: relative;
+        font-size: 1.6rem;
+        span {
+          display: table-cell;
+          vertical-align: middle;
+          cursor: pointer;
+        }
+      }
+    }
+    &.stick {
+      box-shadow: 0px 0 11px 0px lighten(@lightBlack, 40%);
+      background: @white;
+      transition: background .5s ease-in-out;
+      & .nav-btn li {
+        color: @lightBlack;
+      }
+      .tab {
+        &:hover {
+          background: @lightBlack;
+          transition: background .3s ease-in-out;
+          color: @white;
+          @media screen and (max-width: 768px) {
+            color: @lightBlack;
+            background: lighten(@lightBlack, 70%)
+          }
+        }
+        &:active {
+          @media screen and (max-width: 768px) {
+            color: @lightBlack;
+            background: lighten(@lightBlack, 70%);
+          }
+        }
+        &:not(:hover) {
+          background: transparent;
+          color: @lightBlack;
+          transition: background .3s ease-in-out;
+          @media screen and (max-width: 768px) {
+            color: @lightBlack;
+          }
+        }
+      }
+    }
+    &:not(.stick) {
+      box-shadow: none;
+      background: transparent;
+      transition: background .5s ease-in-out;
+      color: @white;
+      .tab {
+        &:hover {
+          background: @white;
+          color: @lightBlack;
+          transition: background .3s ease-in-out;
+          @media screen and (max-width: 768px) {
+            color: @lightBlack;
+            background: lighten(@lightBlack, 60%);
+          }
+        }
+        &:not(:hover) {
+          background: transparent;
+          transition: background .3s ease-in-out;
+          @media screen and (max-width: 768px) {
+            color: @lightBlack;
+          }
+        }
+      }
+    }
+  }
+}
+
+#preface {
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .image {
+    width: 100%;
+    padding-bottom: 49.4%;
+    height: 0;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+      &:hover {
+        filter: grayscale(45%);
+      }
+    }
+  }
+  .info-wrapper {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    .info {
+      top: 0;
+      width: 100%;
+      text-align: center;
+      h1 {
+        color: @white;
+        font-size: 5rem;
+        font-weight: 100;
+      }
+      a {
+        font-size: 1.5rem;
+        display: inline-block;
+        padding: 8px 32px;
+        border: 2px solid @white;
+        text-decoration: none;
+        color: @white;
+        margin: 24px 12px;
+        li {
+          padding: 0 4px;
+        }
+        &:hover {
+          background: fadeout(@white, 70%);
+          color: @lightBlack;
+        }
+      }
+    }
+  }
+}
+
+main#index {
+  padding-top: 32px;
+}
+
+section#hotel, section#scene {
+  width: 100%;
+  box-sizing: border-box;
+  @media screen and (min-width: 768px) {
+    padding: 48px;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 24px;
+  }
+}
+
+section#scene {
+  .landscape-wrapper {
+    position: relative;
+    width: 100%;
+    .landscape, #index-map {
+      @media screen and (min-width: 768px) {
+        width: 50%;
+        padding-bottom: 30.9%;
+        float: left;
+      }
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-bottom: 61.8%;
+        margin-top: 24px;
+        float: left;
+        box-shadow: 0 0 1px 0 @lightBlack;
+      }
+    }
+    .landscape {
+      float: left;
+      background-image: url(../resource/picture/scene1.jpg);
+      background-origin: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      .info {
+        position: absolute;
+        z-index: 1;
+        top: 64px;
+        color: @white;
+      }
+    }
+    #index-map {
+      background: gray;
+    }
+  }
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 64px;
+    background: lightblue;
+  }
+}
+
+.slide#hotel {
+
+  .content-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    @media screen and (min-width: 768px) {
+      width: 100%;
+      margin: auto;
+      position: relative;
+    }
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+    .picture {
+      box-sizing: border-box;
+      @media screen and (min-width: 768px) {
+        width: 50%;
+        padding-bottom: 25%;
+        float: left;
+        position: relative;
+      }
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin-top: 24px;
+        box-shadow: 0 0 1px 0 @lightBlack;
+        padding-bottom: 50%;
+        float: left;
+        position: relative;
+
+      }
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      .info {
+        position: absolute;
+        z-index: 1;
+        color: @white;
+        padding: 16px 24px;
+        box-sizing: border-box;
+        width: 100%;
+        bottom: 0;
+        background: fadeout(Black, 60%);
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        h1 {
+          font-weight: 200;
+          letter-spacing: 2px;
+          line-height: 250%;
+        }
+        @media screen and (max-width: 768px) {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 32px;
+  background: darkblue;
+  text-align: center;
+  color: white;
+  padding: 24px 0;
+  letter-spacing: 2px;
+}
