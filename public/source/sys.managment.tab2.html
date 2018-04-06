@@ -1,0 +1,192 @@
+<html>
+<head>
+    <title>中国-江西-靖安-民宿</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" type="text/css" href="../css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/quilljs.snow.editor.css"/>
+    <link rel='stylesheet' type='text/css' href='../css/semantic.min.css'/>
+    <!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=cUWciM1b3cacMFaSKRgTGT9W5yfh7RF7"></script> -->
+    <script type="text/javascript" src="../plugin/quill/quill.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='../js/semantic.js'></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+</head>
+<body>
+<div class="managment toolbar">
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon leaf"></i>
+            </span>
+        <span class="data">新建景点</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="ui icon cube"></i>
+            </span>
+        <span class="data">新建民宿</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon world"></i>
+            </span>
+        <span class="data">景点管理</span>
+    </div>
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon cubes"></i>
+            </span>
+        <span class="data">民宿管理</span>
+    </div>
+    <!--暂时不实现  -->
+    <div class="hu-ui menu-item">
+            <span class="icon">
+                <i class="icon connectdevelop"></i>
+            </span>
+        <span class="data">运行状态</span>
+    </div>
+    <div class="hu-ui menu-item active">
+            <span class="icon">
+                <i class="icon settings"></i>
+            </span>
+        <span class="data">系统管理</span>
+    </div>
+</div>
+<main class="managment-wrapper">
+    <header class='clearfix'>
+        <div class="hu-ui user">
+            <img class="portrait" src="../resource/image/bg.jpg">
+            <a class="header" href='javascript:void(0)'>邱夕燕</a>
+            <a class=''>退出</a>
+        </div>
+    </header>
+    <div class="managment">
+        <section id='tab-group'>
+            <div class="table-header">
+                <div class="ui top attached tabular menu">
+                    <a class="item">用户管理</a>
+                    <a class="item active">系统配置</a>
+                </div>
+            </div>
+            <div class="ui message positive">
+                <div class='header'>注意事项</div>
+                <p>用于控制系统的表现形式，只有超级管理员才有权限访问</p>
+                <i class='ui icon close'></i>
+            </div>
+            <div class='table-wrapper'>
+                <table class="ui collapsing celled table">
+                    <thead>
+                    <tr>
+                        <th colspan=2>
+                            系统信息配置
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="ui selection dropdown">
+                                <input type="hidden" name="database" data-title='database'>
+                                <i class="dropdown icon"></i>
+                                <div class="default text">mysql</div>
+                                <div class="menu">
+                                    <div class="item" data-value="mysql">mysql</div>
+                                    <div class="item" data-value="sqlserver">sqlserver</div>
+                                    <div class="item" data-value="postsql">postsql</div>
+                                    <div class="item" data-value="oracle">oracle</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ui labeled input">
+                                <div class="ui label">
+                                    address
+                                </div>
+                                <input type="text" placeholder="localhost" data-title='address'>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="ui labeled input">
+                                <div class="ui label">
+                                    port
+                                </div>
+                                <input type=number placeholder="3306" data-title='port'>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ui labeled input">
+                                <div class="ui label">
+                                    userName
+                                </div>
+                                <input type=text placeholder="数据库用户名" data-title='userName'>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="ui labeled input">
+                                <div class="ui label">
+                                    psd
+                                </div>
+                                <input type=text placeholder="数据库密码" data-title='psd'>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ui labeled input">
+                                <div class="ui label">
+                                    rowPerPage
+                                </div>
+                                <input type=number placeholder="15" data-title='rowPerPage'>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="ui labeled input">
+                                <div class="ui label">
+                                    itemNumEachLoad
+                                </div>
+                                <input type=number placeholder="15" data-title='itemNumEachLoad'>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ui labeled input">
+                                <div class="ui label">
+                                    recommandNum
+                                </div>
+                                <input type=number placeholder="15" data-title='recommandNum'>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan=2>
+                            <button class='ui primary button' id='save-config'>保存</button>
+                        </th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+<script type='text/javascript'>
+    $(function () {
+        $('.ui.dropdown')
+            .dropdown({
+                maxSelections: 3
+            })
+    })
+</script>
+</body>
+</html>
