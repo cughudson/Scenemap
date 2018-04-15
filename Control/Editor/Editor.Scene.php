@@ -6,11 +6,6 @@
  * Time: 0:49
  */
 session_start(['cookie_lifetime' => 30 * 60 * 24]);
-if (!array_key_exists("login", $_SESSION)) {
-    echo "<script type='text/javascript'>alert('检测到您尚未登陆系统，请登陆')</script>";
-    echo "<script type='text/javascript'>window.top.location.href ='./../../login.php'</script>";
-    die();
-}
 if (isset($_SESSION['time'])) {
     if ($_SESSION['time'] < time()) {
         session_unset();

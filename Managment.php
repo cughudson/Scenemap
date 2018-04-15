@@ -49,7 +49,7 @@ include_once dirname(__FILE__, 1) . "/Views/Partial/Header.php";
             var baseUrl = '<?php echo BaseUrl . "/Views/Partial"?>';
             switch (type) {
                 case "newscene":
-                    url = baseUrl + "/Scene.Editor.php";
+                    url = baseUrl + "/Scene.Editor.Title.php";
                     break;
                 case "newhotel":
                     url = baseUrl + "/Hotel.Editor.php";

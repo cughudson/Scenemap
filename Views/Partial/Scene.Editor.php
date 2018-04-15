@@ -33,7 +33,7 @@ if ($isAdmin) {
     }
 }
 ?>
-<section id="editor" class="editor" data-userid= <?php echo $_SESSION['uuid'] ?>>
+<div>
     <div class='ui input'>
         <input id="title" type="text" autocomplete=false placeholder="输入标题" for="editor" required autofocus
                maxlength=20>
@@ -54,26 +54,26 @@ if ($isAdmin) {
             <p>这里将显示拾取坐标点的位置</p>
         </div>
     </div>
-    <div class="ui modal">
-        <div class="input ui">
-            <input type="text" placeholder="输入城市名称" autocomplete="off">
-        </div>
+</div>
+<div class="ui modal">
+    <div class="input ui">
+        <input type="text" placeholder="输入城市名称" autocomplete="off">
     </div>
-    <div class='ui divider'></div>
-    <div class="article-content hidden-data"></div>
-    <div class="rich-editor-wrapper">
-        <h5>景点描述(添加的图片每张不要超过256K且至少上传一张图片)</h5>
-        <div id="rich-editor">
-        </div>
-        <div class="drag-bar">
-            <span><i class="angle double down icon"></i></span>
-        </div>
+</div>
+<div class='ui divider'></div>
+<div class="article-content hidden-data"></div>
+<div class="rich-editor-wrapper">
+    <h5>景点描述(添加的图片每张不要超过256K且至少上传一张图片)</h5>
+    <div id="rich-editor">
     </div>
-    <div class="row">
-        <button id="publish" class='ui primary button'>发布</button>
-        <button id="save" class='ui primary button hasclick'>保存</button>
+    <div class="drag-bar">
+        <span><i class="angle double down icon"></i></span>
     </div>
-</section>
+</div>
+<div class="row">
+    <button id="publish" class='ui primary button'>发布</button>
+    <button id="save" class='ui primary button hasclick'>保存</button>
+</div>
 <div id="geo-picker-pannel" class="panel">
     <div class="close-wrapper clearfix">
         <span class="close clickable"><i class="icon close"></i></span>
